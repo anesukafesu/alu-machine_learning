@@ -4,6 +4,6 @@
 
 
 def np_transpose(matrix):
-    """ transposes an nd.array 
+    """ transposes an nd.array
     """
     return matrix.transpose()
