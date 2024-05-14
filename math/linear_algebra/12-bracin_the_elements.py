@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-import numpy as np
 """ implements the np_elementwise function
 """
 
