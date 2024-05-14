@@ -16,7 +16,7 @@ def matrix_transpose(matrix):
 
         for row in matrix:
             new_row.append(row[i])
-        
+
         transposed_matrix.append(new_row)
-    
+
     return transposed_matrix
