@@ -25,7 +25,7 @@ def add_matrices2D(mat1, mat2):
 
         for num1, num2 in zip(row1, row2):
             result_row.append(num1 + num2)
-        
+
         result_matrix.append(result_row)
-    
+
     return result_matrix
