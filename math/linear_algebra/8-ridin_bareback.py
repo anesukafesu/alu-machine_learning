@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
+""" implements the mat_mul function
+"""
 
 
 def mat_mul(mat1, mat2):
+    """ multiplies two matrices together, every row, by every column
+    """
     result = []
 
     # The number of rows and columns in the matrices

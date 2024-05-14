@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
+""" implements add_matrices2D
+"""
 
 
 def add_matrices2D(mat1, mat2):
-    # TODO: Check for different shapes
-
+    """ adds two matrices elementwise
+    """
     # Check if there is an equal number of rows
     if len(mat1) != len(mat2):
         return None

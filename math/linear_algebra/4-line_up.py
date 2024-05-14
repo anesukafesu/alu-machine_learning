@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
+""" implements the add array method
+"""
 
 
 def add_arrays(arr1, arr2):
+    """ adds two arrays elementwise
+    """
     if len(arr1) != len(arr2):
         return None
     

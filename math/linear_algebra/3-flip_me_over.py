@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
+""" implements the matrix transpose function
+"""
 
 
 def matrix_transpose(matrix):
+    """ transposes a matrix
+    """
     # n is the number of rows in the transposed matrix
     transposed_matrix = []
     n = len(matrix[0])
