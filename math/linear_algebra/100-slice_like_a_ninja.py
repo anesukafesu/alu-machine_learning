@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """ Implements the np_slice method
 """
-import numpy as np
 
 def np_slice(matrix, axes={}):
     """ Slices a matrix along specified axes and limits
@@ -15,10 +14,10 @@ def np_slice(matrix, axes={}):
         start, end, step = extract_slice_params(slice_params)
 
         # Create indices to use to get data
-        indices = np.arange(start, end, step)
+        indices = list(range(start, end, step))
 
         # Get rows from start to end using step
-        result = np.take(result, indices, axis)
+        result = result.take(result, indices, axis)
 
     return result
 
