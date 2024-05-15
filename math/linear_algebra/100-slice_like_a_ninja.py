@@ -27,14 +27,14 @@ def extract_slice_params(slice_tuple):
 
     # If only one value has been provided, it is the end value
     if len(slice_tuple) == 1:
-        end, = slice_tuple
+        end = slice_tuple[0] or -1
 
     # If two values have been provided, then they are the start and end values
     elif len(slice_tuple) == 2:
-        start, end = slice_tuple
+        start, end = slice_tuple[0] or 0, slice_tuple[1] or -1
 
     # If three values have been provided, then they are the start, end and stop values
     elif len(slice_tuple) == 3:
-        start, end, step = slice_tuple
+        start, end, step = slice_tuple[0] or 0, slice_tuple[1] or -1, slice_tuple[2] or 1
     
     return start, end, step
