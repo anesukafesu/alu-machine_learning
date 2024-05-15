@@ -17,7 +17,7 @@ def np_slice(matrix, axes={}):
         indices = list(range(start, end, step))
 
         # Get rows from start to end using step
-        result = result.take(result, indices, axis)
+        result = result.take(indices, axis)
 
     return result
 
