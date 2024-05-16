@@ -16,9 +16,11 @@ def add_matrices(mat1, mat2):
 
     # This will only run if the matrices are the same shape
     return add(mat1, mat2)
-   
+
 
 def add(mat1, mat2):
+    """ Function to recursively add matrices of the same shape.
+    """
     if is_number(mat1[0]) and is_number(mat2[0]):
         # We add only if the elements of mat1 and mat2 are ints
         return [num1 + num2 for num1, num2 in zip(mat1, mat2)]
