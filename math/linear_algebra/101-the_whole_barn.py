@@ -15,11 +15,15 @@ def add_matrices(mat1, mat2):
         return None
 
     # This will only run if the matrices are the same shape
+    return add(mat1, mat2)
+   
+
+def add(mat1, mat2):
     if is_number(mat1[0]) and is_number(mat2[0]):
         # We add only if the elements of mat1 and mat2 are ints
         return [num1 + num2 for num1, num2 in zip(mat1, mat2)]
     else:
-        return [add_matrices(nums1, nums2) for nums1, nums2 in zip(mat1, mat2)]
+        return [add(nums1, nums2) for nums1, nums2 in zip(mat1, mat2)]
 
 
 def is_number(element):
