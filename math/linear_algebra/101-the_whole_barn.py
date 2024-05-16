@@ -23,9 +23,14 @@ def add_matrices(mat1, mat2):
 
 
 def is_number(element):
+    """ Function to determine if a passed element is a number or not
+    """
     return isinstance(element, int) or isinstance(element, float)
 
+
 def get_mat_shape(matrix):
+    """ Function to get the shape of a matrix
+    """
     current_dimension = matrix
     shape = []
 
@@ -35,10 +40,13 @@ def get_mat_shape(matrix):
 
     return shape
 
-def compare_matrix_shapes(list1, list2):
+
+def compare_matrix_shapes(mat1, mat2):
+    """ Function to compare the shape of two matrices
+    """
     result = True
 
-    for element1, element2 in zip(list1, list2):
+    for element1, element2 in zip(mat1, mat2):
         result = result and element1 == element2
 
     return result
