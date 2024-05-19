@@ -3,23 +3,23 @@
 """
 
 def np_slice(matrix, axes={}):
+    """ Slices a matrix along specified axes and limits
     """
-    Slices a matrix along specific axes.
+    result = matrix
 
-    Args:
-    - matrix (list of lists): The matrix to slice.
-    - axes (dict): A dictionary where the key is an axis to slice along
-      and the value is a tuple representing the slice to make along that axis.
+    {}.items()
 
-    Returns:
-    - list of lists: The sliced matrix.
-    """
-    sliced_matrix = matrix.copy()
-    for axis, slice_tuple in axes.items():
-        axis_index = axis % len(matrix)  # Ensure the axis index is within the range of dimensions
-        start, stop, step = extract_slice_params(slice_tuple)
-        sliced_matrix = [row[start:stop:step] if i == axis_index else row for i, row in enumerate(sliced_matrix)]
-    return sliced_matrix
+    for axis, slice_params in axes.items():
+        # Extract the slice params
+        start, end, step = extract_slice_params(slice_params)
+
+        # Create indices to use to get data
+        indices = list(range(start, end, step))
+
+        # Get rows from start to end using step
+        result = result.take(indices, axis)
+
+    return result
 
 
 def extract_slice_params(slice_tuple):
