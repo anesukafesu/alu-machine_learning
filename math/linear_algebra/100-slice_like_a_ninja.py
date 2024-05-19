@@ -7,14 +7,14 @@ def np_slice(matrix, axes={}):
     """
     result = matrix
 
-    {}.items()
-
     for axis, slice_params in axes.items():
         # Extract the slice params
         start, end, step = extract_slice_params(slice_params)
 
         # Create indices to use to get data
         indices = list(range(start, end, step))
+
+        print(indices)
 
         # Get rows from start to end using step
         result = result.take(indices, axis)
