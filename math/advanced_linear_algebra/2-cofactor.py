@@ -2,6 +2,7 @@
 """ Implements the minor function
 """
 
+
 def cofactor(matrix):
     """ Returns the cofactor of a given matrix
 
@@ -18,7 +19,7 @@ def cofactor(matrix):
     # Check if it is a square matrix
     if is_empty_matrix(matrix) or not is_a_square_matrix(matrix):
         raise ValueError('matrix must be a non-empty square matrix')
-    
+
     # Convert the matrix to a matrix of minors
     matrix_of_minors = minor(matrix)
     matrix_of_cofactors = []
