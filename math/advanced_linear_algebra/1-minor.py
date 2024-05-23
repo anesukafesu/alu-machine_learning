@@ -18,11 +18,14 @@ def minor(matrix):
         raise TypeError('matrix must be a list of lists')
 
     # Check if it is a square matrix
-    if is_empty_matrix(matrix) or is_a_square_matrix(matrix):
+    if is_empty_matrix(matrix) or not is_a_square_matrix(matrix):
         raise ValueError('matrix must be a non-empty square matrix')
 
     minors = []
     n = len(matrix)
+
+    if len(matrix) == 1 and len(matrix[0]):
+        return matrix
 
     # Loop through each element in the matrix
     for i in range(n):
