@@ -42,7 +42,7 @@ def cofactor(matrix):
 
         # If i is odd, we add the negated element
         # Else we add the element as is
-        matrix[row][column] = -element if i % 2 == 1 else element
+        matrix[row][column] = -element if row % 2 == 1 else element
 
     # Return the matrix of cofactors
     return matrix
