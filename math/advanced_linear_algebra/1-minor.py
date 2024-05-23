@@ -3,14 +3,14 @@
 """
 
 
-def determinant(matrix):
+def minor(matrix):
     """ Calculates the minor of a given matrix
 
     Args:
-        matrix: The matrix whose determinant is to be calculated
+        matrix: The matrix whose minors are to be calculated
 
     Returns:
-        float: The determinant of the given matrix.
+        matrix: The matrix of minors of the given matrix.
     """
 
     # Check if it's a matrix
