@@ -24,18 +24,14 @@ def minor(matrix):
     minors = []
     n = len(matrix)
 
-    if len(matrix) == 1 and len(matrix[0]):
-        return matrix
+    # if len(matrix) == 1 and len(matrix[0]):
+    #     return [[1]]
 
     # Loop through each element in the matrix
     for i in range(n):
         row = []
 
         for j in range(n):
-
-            # Extract the element
-            element = matrix[i][j]
-
             # Create a submatrix
             submatrix = exclude_row_and_column_from_matrix(matrix, i, j)
 
