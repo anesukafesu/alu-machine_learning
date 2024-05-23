@@ -24,8 +24,8 @@ def minor(matrix):
     minors = []
     n = len(matrix)
 
-    # if len(matrix) == 1 and len(matrix[0]):
-    #     return [[1]]
+    if len(matrix) == 1 and len(matrix[0]):
+        return [[1]]
 
     # Loop through each element in the matrix
     for i in range(n):
