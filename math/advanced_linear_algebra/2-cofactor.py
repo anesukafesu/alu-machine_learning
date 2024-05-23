@@ -24,7 +24,7 @@ def cofactor(matrix):
     matrix_of_cofactors = []
 
     # n is the dimensionality of the matrix
-    n = len(matrix)
+    n = len(matrix_of_minors)
 
     # We loop through all elements
     for i in range(n):
@@ -38,7 +38,7 @@ def cofactor(matrix):
         for j in range(n):
 
             # Extract the element from the row
-            element = multiplier * matrix[i][j]
+            element = multiplier * matrix_of_minors[i][j]
 
             # Add element to row
             row.append(element)
