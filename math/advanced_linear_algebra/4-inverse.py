@@ -21,7 +21,7 @@ def inverse(matrix):
         raise ValueError('matrix must be a non-empty square matrix')
     
     determinant = calculate_determinant(matrix)
-    adjugate_of_matrix = adjugate(determinant)
+    adjugate_of_matrix = adjugate(matrix)
     inverse = elementwise_division(adjugate_of_matrix, determinant)
     return inverse
 
