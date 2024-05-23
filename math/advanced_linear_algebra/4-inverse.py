@@ -8,7 +8,7 @@ def inverse(matrix):
 
     Args:
         matrix: The matrix whose inverse is to be calculated
-    
+
     Returns:
         matrix: The inverse of a given matrix
     """
@@ -19,7 +19,7 @@ def inverse(matrix):
     # Check if it is a non-empty square matrix
     if is_empty_matrix(matrix) or not is_a_square_matrix(matrix):
         raise ValueError('matrix must be a non-empty square matrix')
-    
+
     determinant = calculate_determinant(matrix)
     adjugate_of_matrix = adjugate(matrix)
     inverse = elementwise_division(adjugate_of_matrix, determinant)
@@ -44,9 +44,9 @@ def elementwise_division(matrix, scalar):
 
         for element in row:
             new_row.append(element / scalar)
-        
+
         new_matrix.append(new_row)
-    
+
     return new_matrix
 
 
