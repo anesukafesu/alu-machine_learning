@@ -34,7 +34,7 @@ def minor(matrix):
         for j in range(n):
 
             # Extract the element
-            element = matrix[i, j]
+            element = matrix[i][j]
 
             # Create a submatrix
             submatrix = exclude_row_and_column_from_matrix(matrix, i, j)
