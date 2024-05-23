@@ -16,8 +16,8 @@ def determinant(matrix):
     # Check if it's a matrix
     if not is_matrix(matrix):
         raise TypeError('matrix must be a list of lists\n\
-                        matrix must be a list of lists\n\
-                        matrix must be a list of lists')
+         matrix must be a list of lists\n\
+         matrix must be a list of lists')
 
     # From this point onwards, we can assume matrix is a valid matrix
     # Check if it is an empty matrix
