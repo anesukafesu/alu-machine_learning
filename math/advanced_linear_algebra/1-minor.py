@@ -42,9 +42,8 @@ def minor(matrix):
             # Calculate the determinant of the submatrix
             submatrix_determinant = calculate_determinant(submatrix)
 
-            # Multiply element and submatrix_determinant
-            # Add them to row
-            row.append(element * submatrix_determinant)
+            # Add the determinant of the submatrix to the row
+            row.append(submatrix_determinant)
         
         # Add row to matrix of minors
         minors.append(row)
