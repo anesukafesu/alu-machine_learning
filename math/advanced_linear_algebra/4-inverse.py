@@ -30,10 +30,9 @@ def inverse(matrix):
     adjugate_of_matrix = adjugate(matrix)
     if determinant == 0:
         return None
-   
+
     inverse = elementwise_division(adjugate_of_matrix, determinant)
     return inverse
-        
 
 
 def elementwise_division(matrix, scalar):
