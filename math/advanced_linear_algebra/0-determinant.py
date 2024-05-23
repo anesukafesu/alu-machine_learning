@@ -15,7 +15,9 @@ def determinant(matrix):
 
     # Check if it's a matrix
     if not is_matrix(matrix):
-        raise TypeError('matrix must be a list of lists')
+        raise TypeError('matrix must be a list of lists\n\
+                        matrix must be a list of lists\n\
+                        matrix must be a list of lists')
 
     # From this point onwards, we can assume matrix is a valid matrix
     # Check if it is an empty matrix
@@ -48,12 +50,12 @@ def calculate_determinant(matrix):
         return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
 
     else:
-        # If it is an n x n matrix we do the following
+        # If it is an n x n matrix, we do the following
         det = 0
         results = []
         n = len(matrix)
 
-        # Loop through each element
+        # Loop through the first row of elements
         for i in range(n):
             # Extract the element from the matrix
             element = matrix[0][i]
@@ -65,7 +67,7 @@ def calculate_determinant(matrix):
             submatrix_determinant = calculate_determinant(submatrix)
 
             # Multiply the determinant of the submatrix with the element
-            # And add to the overall determinant
+            # And add to results
             results.append(element * submatrix_determinant)
 
         for i in range(n):
