@@ -19,7 +19,7 @@ def adjugate(matrix):
     # Check if it is a non-empty square matrix
     if is_empty_matrix(matrix) or not is_a_square_matrix(matrix):
         raise ValueError('matrix must be a non-empty square matrix')
-    
+
     matrix_of_cofactors = cofactor(matrix)
     adjugate = transpose(matrix_of_cofactors)
     return adjugate
@@ -30,7 +30,7 @@ def transpose(matrix):
 
     Args:
         matrix: matrix to be transposed
-    
+
     Returns:
         matrix: The transposed matrix
     """
@@ -47,6 +47,7 @@ def transpose(matrix):
         transposed_matrix.append(new_row)
 
     return transposed_matrix
+
 
 def cofactor(matrix):
     """ Returns the cofactor of a given matrix
