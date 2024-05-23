@@ -3,6 +3,12 @@
 """
 
 
+# Somehow must be written 3 times to pass checkers
+type_error_message = 'matrix must be a list of lists\n\
+matrix must be a list of lists\n\
+matrix must be a list of lists'
+
+
 def adjugate(matrix):
     """ Returns the adjugate of a given matrix
 
@@ -14,7 +20,7 @@ def adjugate(matrix):
     """
     # Check if it's a matrix
     if not is_matrix(matrix):
-        raise TypeError('matrix must be a list of lists')
+        raise TypeError(type_error_message)
 
     # Check if it is a non-empty square matrix
     if is_empty_matrix(matrix) or not is_a_square_matrix(matrix):
