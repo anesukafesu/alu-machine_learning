@@ -40,12 +40,13 @@ def minor(matrix):
 
             # Add the determinant of the submatrix to the row
             row.append(submatrix_determinant)
-        
+
         # Add row to matrix of minors
         minors.append(row)
-    
+
     # Return matrix of minors
     return minors
+
 
 def calculate_determinant(matrix):
     """ Function to calculate the determinant of a matrix.
