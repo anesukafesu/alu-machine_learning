@@ -19,26 +19,33 @@ def cofactor(matrix):
     if is_empty_matrix(matrix) or not is_a_square_matrix(matrix):
         raise ValueError('matrix must be a non-empty square matrix')
     
+    # Convert the matrix to a matrix of minors
+    matrix = minor(matrix)
 
-    matrix_of_minors = minor(matrix)
-    matrix_of_cofactors = []
-
+    # n is the dimensionality of the matrix
     n = len(matrix)
 
-    for i in range(n):
-        row = []
+    # The number of elements is n x n
+    n_elements = n * n
 
-        for j in range(n):
-            element = matrix_of_minors[i][j]
+    # We loop through all elements
+    for i in range(n_elements):
 
-            if i % 2 == 0:
-                row.append(element)
-            else:
-                row.append(-element)
+        # The row number is truncate division of i and n
+        row = i // n
 
-        matrix_of_cofactors.append(row)
+        # The column is the modulus of i and n
+        column = i % n
 
-    return matrix_of_cofactors
+        # Extract the element from the row
+        element = matrix[row][column]
+
+        # If i is odd, we add the negated element
+        # Else we add the element as is
+        matrix[row][column] = -element if i % 2 == 1 else element
+
+    # Return the matrix of cofactors
+    return matrix
 
 
 def minor(matrix):
