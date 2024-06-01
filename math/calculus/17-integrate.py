@@ -6,4 +6,4 @@
 def poly_integral(poly):
     """ Calculates the integral of a given polynomial
     """
-    return [0] + list(map(lambda x, i: x / (i + 1), poly))
+    return [0] + list(map(lambda x, i: x / (i + 1), poly, range(1, len(poly) + 1)))
