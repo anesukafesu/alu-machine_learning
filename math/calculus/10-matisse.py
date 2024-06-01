@@ -6,4 +6,4 @@
 def poly_derivative(poly):
     """ Calculates the derivative of a given polynomial
     """
-    return list(map(poly, lambda x, i: x * i)[1:])
+    return list(map(lambda x, i: x * i, poly)[1:])
