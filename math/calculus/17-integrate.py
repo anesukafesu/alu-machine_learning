@@ -18,7 +18,7 @@ def poly_integral(poly, C=0):
 
     simplified_integral = __simplify_integral(integral)
 
-    return simplified_integral if len(integral) else [0]
+    return simplified_integral if len(integral) != 0 else [0]
 
 
 def __simplify_integral(coefficients):
