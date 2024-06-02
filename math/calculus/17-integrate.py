@@ -14,13 +14,11 @@ def poly_integral(poly, C=0):
 
     powers = range(1, len(poly) + 1)
 
-    integral = [C] + list(map(__divide, poly, powers))
+    integral = list(map(__divide, poly, powers))
 
     simplified_integral = __simplify_integral(integral)
 
-    print(simplified_integral, len(simplified_integral))
-
-    return simplified_integral if len(integral) != 0 else [0]
+    return [C] + simplified_integral
 
 
 def __simplify_integral(coefficients):
