@@ -11,6 +11,8 @@ def poly_integral(poly, C=0):
 
     if not __every(__is_number, poly):
         return None
+    
+    print(poly, C)
 
     powers = range(1, len(poly) + 1)
 
