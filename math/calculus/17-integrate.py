@@ -14,7 +14,16 @@ def poly_integral(poly, C=0):
 
     powers = range(1, len(poly) + 1)
 
-    return [C] + list(map(lambda x, p: x / p, poly, powers))
+    def divide_by_power(x, p):
+        quotient = x / p
+
+        if int(quotient) == quotient:
+            return int(quotient)
+        else:
+            return quotient
+
+    return [C] + list(map(divide_by_power, poly, powers))
+
 
 def is_number(x):
     """ Returns True if x is either an int or float
