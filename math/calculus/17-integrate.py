@@ -11,22 +11,34 @@ def poly_integral(poly, C=0):
 
     if not every(is_number, poly):
         return None
-    
-    # Edge cases
-    if len(poly) == 1 and poly[0] == 0:
-        return [C]
 
     powers = range(1, len(poly) + 1)
 
-    def divide_by_power(x, p):
-        quotient = x / p
+    integral = list(map(divide, poly, powers))
 
-        if int(quotient) == quotient:
-            return int(quotient)
-        else:
-            return quotient
+    return [C] + simplify_integral(integral)
 
-    return [C] + list(map(divide_by_power, poly, powers))
+
+def simplify_integral(coefficients):
+    """ Simplifies integrals by trimming any trailing zeros
+    """
+    while coefficients[-1] and coefficients[-1] == 0:
+        coefficients.pop()
+
+    return coefficients
+
+
+def divide(x, y):
+    """ Divides x by y and returns the quotient.
+    If the quotient is a whole number it will be returned
+    as an int, else as a float
+    """
+    quotient = x / y
+
+    if int(quotient) == quotient:
+        return int(quotient)
+    else:
+        return quotient
 
 
 def is_number(x):
