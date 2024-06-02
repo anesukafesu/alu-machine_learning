@@ -9,9 +9,25 @@ def poly_integral(poly, C=0):
     if not isinstance(poly, list):
         return None
 
-    if not isinstance(poly, int) or not isinstance(poly, float):
+    if not every(is_number, poly):
         return None
 
     powers = range(1, poly.len + 1)
 
     return [C] + map(lambda x, p: x / p, poly, powers)
+
+def is_number(x):
+    """ Returns True if x is either an int or float
+    """
+    return isinstance(x, int) or isinstance(x, float)
+
+
+def every(func, iter):
+    """ Returns True if each value in the iter returns True
+    after being passed to func. Else it returns False
+    """
+    for val in iter:
+        if not func(val):
+            return False
+
+    return True

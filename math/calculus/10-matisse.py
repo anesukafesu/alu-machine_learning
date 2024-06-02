@@ -32,4 +32,4 @@ def every(func, iter):
         if not func(val):
             return False
 
-    return True    
+    return True
