@@ -9,17 +9,17 @@ def poly_integral(poly, C=0):
     if not isinstance(poly, list):
         return None
 
-    if not every(is_number, poly):
+    if not __every(__is_number, poly):
         return None
 
     powers = range(1, len(poly) + 1)
 
-    integral = list(map(divide, poly, powers))
+    integral = [C] + list(map(__divide, poly, powers))
 
-    return [C] + simplify_integral(integral)
+    return __simplify_integral(integral)
 
 
-def simplify_integral(coefficients):
+def __simplify_integral(coefficients):
     """ Simplifies integrals by trimming any trailing zeros
     """
     while coefficients[-1] and coefficients[-1] == 0:
@@ -28,7 +28,7 @@ def simplify_integral(coefficients):
     return coefficients
 
 
-def divide(x, y):
+def __divide(x, y):
     """ Divides x by y and returns the quotient.
     If the quotient is a whole number it will be returned
     as an int, else as a float
@@ -41,13 +41,13 @@ def divide(x, y):
         return quotient
 
 
-def is_number(x):
+def __is_number(x):
     """ Returns True if x is either an int or float
     """
     return isinstance(x, int) or isinstance(x, float)
 
 
-def every(func, iter):
+def __every(func, iter):
     """ Returns True if each value in the iter returns True
     after being passed to func. Else it returns False
     """
