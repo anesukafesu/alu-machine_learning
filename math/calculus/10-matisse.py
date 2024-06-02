@@ -12,6 +12,9 @@ def poly_derivative(poly):
     if not every(is_number, poly):
         return None
 
+    if len(poly) == 0:
+        return None
+
     if len(poly) == 1:
         return [0]
 
