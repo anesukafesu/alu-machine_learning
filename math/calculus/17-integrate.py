@@ -21,8 +21,11 @@ def poly_integral(poly, C=0):
 
 def __simplify_integral(coefficients):
     """ Simplifies integrals by trimming any trailing zeros
+    from the coefficients list.
     """
-    while coefficients[-1] and coefficients[-1] == 0:
+    coefficients = coefficients.copy()
+
+    while len(coefficients) >= 0 and coefficients[-1] == 0:
         coefficients.pop()
 
     return coefficients
