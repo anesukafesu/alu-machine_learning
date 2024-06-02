@@ -14,7 +14,7 @@ def poly_integral(poly, C=0):
 
     powers = range(1, len(poly) + 1)
 
-    return [C] + map(lambda x, p: x / p, poly, powers)
+    return [C] + list(map(lambda x, p: x / p, poly, powers))
 
 def is_number(x):
     """ Returns True if x is either an int or float
