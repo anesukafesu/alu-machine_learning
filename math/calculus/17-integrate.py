@@ -8,11 +8,15 @@ def poly_integral(poly, C=0):
     """
     if not isinstance(poly, list):
         return None
+    
+    if len(poly) == 0:
+        return None
 
     if not __every(__is_number, poly):
         return None
     
-    print(poly, C)
+    if not isinstance(C, int):
+        return None
 
     powers = range(1, len(poly) + 1)
 
