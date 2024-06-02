@@ -3,7 +3,15 @@
 """
 
 
-def poly_integral(poly):
+def poly_integral(poly, C):
     """ Calculates the integral of a given polynomial
     """
-    return [0] + list(map(lambda x, i: x / (i + 1), poly, range(1, len(poly) + 1)))
+    if not isinstance(poly, list):
+        return None
+    
+    if not isinstance(poly, int) or not isinstance(poly, float):
+        return None
+
+    powers = range(1, poly.len + 1)
+
+    return [C] + map(lambda x, p: x / p, poly, powers)
