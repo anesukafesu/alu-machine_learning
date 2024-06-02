@@ -12,7 +12,7 @@ def poly_integral(poly, C=0):
     if not every(is_number, poly):
         return None
 
-    powers = range(1, poly.len + 1)
+    powers = range(1, len(poly) + 1)
 
     return [C] + map(lambda x, p: x / p, poly, powers)
 
