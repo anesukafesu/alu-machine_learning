@@ -18,6 +18,8 @@ def poly_integral(poly, C=0):
 
     simplified_integral = __simplify_integral(integral)
 
+    print(simplified_integral, len(simplified_integral))
+
     return simplified_integral if len(integral) != 0 else [0]
 
 
