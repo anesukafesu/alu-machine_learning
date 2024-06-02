@@ -3,12 +3,12 @@
 """
 
 
-def poly_integral(poly, C):
+def poly_integral(poly, C=0):
     """ Calculates the integral of a given polynomial
     """
     if not isinstance(poly, list):
         return None
-    
+
     if not isinstance(poly, int) or not isinstance(poly, float):
         return None
 
