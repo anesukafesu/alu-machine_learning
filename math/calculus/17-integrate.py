@@ -16,7 +16,9 @@ def poly_integral(poly, C=0):
 
     integral = [C] + list(map(__divide, poly, powers))
 
-    return __simplify_integral(integral)
+    simplified_integral = __simplify_integral(integral)
+
+    return simplified_integral if len(integral) else [0]
 
 
 def __simplify_integral(coefficients):
