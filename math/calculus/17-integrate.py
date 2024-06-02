@@ -25,7 +25,7 @@ def __simplify_integral(coefficients):
     """
     coefficients = coefficients.copy()
 
-    while len(coefficients) >= 0 and coefficients[-1] == 0:
+    while len(coefficients) >= 1 and coefficients[-1] == 0:
         coefficients.pop()
 
     return coefficients
