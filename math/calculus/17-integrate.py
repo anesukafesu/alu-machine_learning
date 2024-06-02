@@ -11,6 +11,10 @@ def poly_integral(poly, C=0):
 
     if not every(is_number, poly):
         return None
+    
+    # Edge cases
+    if len(poly) == 1 and poly[0] == 0:
+        return [C]
 
     powers = range(1, len(poly) + 1)
 
