@@ -9,7 +9,7 @@ def poly_derivative(poly):
     if not isinstance(poly, list):
         return None
     
-    if len(ploy) == 1:
+    if len(poly) == 1:
         return [0]
     
     return list(map(lambda x, i: x * i, poly, range(len(poly))))[1:]
