@@ -24,3 +24,35 @@ class Poisson:
                 raise ValueError('data must contain multiple values')
 
             self.lambtha = float(sum(data) / len(data))
+
+
+    def pmf(self, k):
+        """ Calculates the probability that k events occur
+        """
+        k = int(k)
+
+        if k < 0:
+            return 0
+        else:
+            e = 2.7182818285
+
+            return e ** -self.lambtha * self.lambtha ** k / self.__fact(k)
+
+
+    def __fact(self, n):
+        """ Calculates the factorial of a number.
+        Args:
+            n (int): The number whose factorial is to be calculated.
+        Returns:
+            (int): The factorial of n.
+        """
+        if not isinstance(n, int):
+            raise TypeError('n must be an int')
+
+        if n < 0:
+            raise ValueError('n must be greater than or equal to zero')
+
+        if n == 0 or n == 1:
+            return 1
+        else:
+            return n * self.__fact(n - 1)
