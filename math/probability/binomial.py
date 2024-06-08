@@ -29,7 +29,7 @@ class Binomial:
                 raise ValueError('data must contain multiple values')
             
             x_bar = sum(data) / len(data)
-            variance = sum(map(lambda x: (x - x_bar) ** 2, data)) / (len(data) - 1)
+            variance = sum(map(lambda x: (x - x_bar) ** 2, data)) / len(data)
             q = variance / x_bar
 
             self.p = 1 - q
