@@ -27,6 +27,10 @@ class Poisson:
 
     def pmf(self, k):
         """ Calculates the probability that k events occur
+        Args:
+            k: the number of occurrences whose probability you want to calculate
+        Returns:
+            (float): the probability that k events are observed.
         """
         k = int(k)
 
@@ -36,6 +40,15 @@ class Poisson:
             e = 2.7182818285
 
             return e ** -self.lambtha * self.lambtha ** k / self.__fact(k)
+
+    def cdf(self, k):
+        """ Calculates the cumulative probability of zero occurrences up to and including k
+        Args:
+            k: the inclusive cutoff number of successes
+        Returns:
+            float: the comulative probability
+        """
+        return sum(map(lambda i: self.pmf(i), range(k + 1)))
 
     def __fact(self, n):
         """ Calculates the factorial of a number.
