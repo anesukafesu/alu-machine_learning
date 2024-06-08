@@ -36,6 +36,24 @@ class Normal:
             variance = numerator / (len(data))
             self.stddev = self.__sqrt(variance)
 
+    def z_score(self, x):
+        """ Calculates z-score of a given x value
+        Args: 
+            x (float | int) the value whose z-score is to be calculated
+        Returns:
+            z (float) the z value of x
+        """
+        return (x - self.mean) / self.stddev
+
+    def x_value(self, z):
+        """ Calculates the x value given a z-score
+        Args:
+            z (float | int) the z-score whose x value is to be calculated
+        Returns:
+            x (float) the x value of the given z-score
+        """
+        return self.mean + z * self.stddev
+
     def __sqrt(self, x):
         """ Function to calculate the square root of a given number x.
         """
