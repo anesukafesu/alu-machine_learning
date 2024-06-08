@@ -62,7 +62,7 @@ class Normal:
         z_score = self.z_score(x)
 
         numerator = e ** (-(z_score ** 2) / 2)
-        denominator = self.__sqrt(2 * π)
+        denominator = self.stddev * self.__sqrt(2 * π)
 
         return numerator / denominator
 
