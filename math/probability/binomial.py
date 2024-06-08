@@ -29,7 +29,7 @@ class Binomial:
                 raise ValueError('data must contain multiple values')
             
             mu = sum(data) / len(data)
-            sigma = self.__sqrt(sum(map(lambda x: (x - mu) ** 2)) / len(data))
+            sigma = self.__sqrt(sum(map(lambda x: (x - mu) ** 2), data) / len(data))
             q = sigma / mu
             p = 1 - q
             n = mu / p
