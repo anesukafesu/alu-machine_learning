@@ -25,7 +25,6 @@ class Poisson:
 
             self.lambtha = float(sum(data) / len(data))
 
-
     def pmf(self, k):
         """ Calculates the probability that k events occur
         """
@@ -37,7 +36,6 @@ class Poisson:
             e = 2.7182818285
 
             return e ** -self.lambtha * self.lambtha ** k / self.__fact(k)
-
 
     def __fact(self, n):
         """ Calculates the factorial of a number.
