@@ -33,7 +33,7 @@ class Normal:
 
             # Calulcating standard deviation
             numerator = sum(map(lambda x: (x - self.mean) ** 2, data))
-            variance =  numerator / (len(data))
+            variance = numerator / (len(data))
             self.stddev = self.__sqrt(variance)
 
     def __sqrt(self, x):
