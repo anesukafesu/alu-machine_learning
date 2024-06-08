@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """ Implements the Normal class
 """
+
+
 class Normal:
     """ Represents a Normal or Gaussian distribution
     """
@@ -26,20 +28,25 @@ class Normal:
             if len(data) < 2:
                 raise ValueError('data must contain multiple values')
 
+            # Calculating mean
             self.mean = float(sum(data) / len(data))
-            self.stddev = self.__sqrt(sum(map(lambda x: (x - self.mean) ** 2, data)) / (len(data)))
+
+            # Calulcating standard deviation
+            numerator = sum(map(lambda x: (x - self.mean) ** 2, data))
+            variance =  numerator / (len(data))
+            self.stddev = self.__sqrt(variance)
 
     def __sqrt(self, x):
         """ Function to calculate the square root of a given number x.
         """
         if x < 0:
-            return complex(0, self.__sqrt(-x))
+            return complex(0, self.__sqrt(abs(x)))
         if x == 0:
             return 0
         n = 1
         last_n = 0
-        while abs(last_n - n) > 0.0000000001:
+        while abs(last_n - n) > 0.00000001:
             last_n = n
             n = (n + x/n) * 0.5
-    
+
         return n
