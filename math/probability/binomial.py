@@ -28,12 +28,12 @@ class Binomial:
             if len(data) < 2:
                 raise ValueError('data must contain multiple values')
             
-            mu = sum(data) / len(data)
-            variance = sum(map(lambda x: (x - mu) ** 2, data)) / len(data)
-            q = variance / mu
+            x_bar = sum(data) / len(data)
+            variance = sum(map(lambda x: (x - x_bar) ** 2, data)) / (len(data) - 1)
+            q = variance / x_bar
 
             self.p = 1 - q
-            self.n = round(mu / p)
+            self.n = round(x_bar / p)
 
     def __sqrt(self, x):
         """ Function to calculate the square root of a given number x.
