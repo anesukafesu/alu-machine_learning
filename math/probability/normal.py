@@ -99,7 +99,7 @@ class Normal:
         samples = self.__frange(lower_x_value, x, parameters['interval_width'])
         return sum(map(lambda z: self.pdf(z) * parameters['interval_width'], samples))
 
-    def __frange(start, end, step):
+    def __frange(self, start, end, step):
         """ Function to generate range using floating point numbers
         Args:
             start (float | int): starting point of the range
