@@ -48,6 +48,11 @@ class Poisson:
         Returns:
             float: the comulative probability
         """
+        k = int(k)
+
+        if k < 0:
+            return 0
+
         return sum(map(lambda i: self.pmf(i), range(k + 1)))
 
     def __fact(self, n):
