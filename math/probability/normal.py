@@ -2,7 +2,7 @@
 """ Implements the Normal class
 """
 π = 3.1415926536
-e =  2.7182818285
+e = 2.7182818285
 
 
 class Normal:
@@ -55,7 +55,7 @@ class Normal:
             x (float) the x value of the given z-score
         """
         return self.mean + z * self.stddev
-    
+
     def pdf(self, x):
         """ Calculates the PDF of a given x in the normal distribution
         """
