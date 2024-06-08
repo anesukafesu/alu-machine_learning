@@ -6,7 +6,7 @@
 class Poisson:
     """ Class to represent a Poisson Distribution
     """
-    def __init__(self, data=None, lambtha = 1.):
+    def __init__(self, data=None, lambtha=1.):
         """ Initialise the Poisson Class
         Args:
             data list[int] | None
@@ -19,7 +19,7 @@ class Poisson:
         else:
             if not isinstance(data, list):
                 raise TypeError('data must be a list')
-            
+
             if len(data) < 2:
                 raise ValueError('data must contain multiple values')
 
