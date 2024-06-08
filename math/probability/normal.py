@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """ Implements the Normal class
 """
+π = 3.1415926536
+e =  2.7182818285
 
 
 class Normal:
@@ -53,6 +55,14 @@ class Normal:
             x (float) the x value of the given z-score
         """
         return self.mean + z * self.stddev
+    
+    def pdf(self, x):
+        """ Calculates the PDF of a given x in the normal distribution
+        """
+        numerator = e ** (-0.5 * (x - self.mean) / self.stddev) ** 2
+        denominator = self.stddev * self.__sqrt(2 * π)
+
+        return numerator / denominator
 
     def __sqrt(self, x):
         """ Function to calculate the square root of a given number x.
