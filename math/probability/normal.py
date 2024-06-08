@@ -27,7 +27,7 @@ class Normal:
                 raise ValueError('data must contain multiple values')
 
             self.mean = float(sum(data) / len(data))
-            self.stddev = self.__sqrt(sum(map(lambda x: (x - self.mean) ** 2, data)) / (len(data) - 1))
+            self.stddev = self.__sqrt(sum(map(lambda x: (x - self.mean) ** 2, data)) / (len(data)))
 
     def __sqrt(self, x):
         """ Function to calculate the square root of a given number x.
@@ -38,7 +38,7 @@ class Normal:
             return 0
         n = 1
         last_n = 0
-        while abs(last_n - n) > 0.0000001:
+        while abs(last_n - n) > 0.0000000001:
             last_n = n
             n = (n + x/n) * 0.5
     
