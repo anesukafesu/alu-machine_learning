@@ -38,7 +38,7 @@ class Normal:
 
     def z_score(self, x):
         """ Calculates z-score of a given x value
-        Args: 
+        Args:
             x (float | int) the value whose z-score is to be calculated
         Returns:
             z (float) the z value of x
