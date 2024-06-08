@@ -28,7 +28,8 @@ class Poisson:
     def pmf(self, k):
         """ Calculates the probability that k events occur
         Args:
-            k: the number of occurrences whose probability you want to calculate
+            k: the number of occurrences whose probability
+            you want to calculate
         Returns:
             (float): the probability that k events are observed.
         """
@@ -42,7 +43,8 @@ class Poisson:
             return e ** -self.lambtha * self.lambtha ** k / self.__fact(k)
 
     def cdf(self, k):
-        """ Calculates the cumulative probability of zero occurrences up to and including k
+        """ Calculates the cumulative probability
+        of zero occurrences up to and including k
         Args:
             k: the inclusive cutoff number of successes
         Returns:
