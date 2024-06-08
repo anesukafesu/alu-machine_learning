@@ -13,6 +13,7 @@ class Binomial:
             n (int | none): Number of trials
             p (float | none): The probability of success in each trial
         """
+        print(data, n, p)
         if data is None:
             if n <= 0:
                 raise ValueError('n must be a positive value')
