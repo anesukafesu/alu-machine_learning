@@ -96,8 +96,26 @@ class Normal:
         }
 
         lower_x_value = self.x_value(parameters['lower_bound'])
-        samples = range(lower_x_value, x, parameters['interval_width'])
+        samples = self.__frange(lower_x_value, x, parameters['interval_width'])
         return sum(map(lambda z: self.pdf(z) * parameters['interval_width'], samples))
+
+    def __frange(start, end, step):
+        """ Function to generate range using floating point numbers
+        Args:
+            start (float | int): starting point of the range
+            end (float | int): exclusive ending point of the range
+            step (float | int): the absolute difference between each value and the next
+        Returns:
+            (list[float | int]): the values in the range specified
+        """
+        i = start
+        values = []
+
+        while i < end:
+            values.append(i)
+            i += step
+        
+        return values
 
     def __sqrt(self, x):
         """ Function to calculate the square root of a given number x.
