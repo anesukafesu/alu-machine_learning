@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """ Implements the Exponential class
 """
+e = 2.7182818285
 
 
 class Exponential:
@@ -27,3 +28,15 @@ class Exponential:
                 raise ValueError('data must contain multiple values')
 
             self.lambtha = len(data) / sum(data)
+
+    def pdf(self, x):
+        """ Calculates the pdf of a given value x
+        Args:
+            x (float): the value whose pdf is to be calculated
+        Returns:
+            (float): the pdf of x
+        """
+        if x < 0:
+            return 0
+        else:
+            return self.lambtha * e ** (-self.lambtha * x)
