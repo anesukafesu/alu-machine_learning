@@ -71,7 +71,6 @@ class Normal:
         return numerator / denominator
 
     def cdf(self, x):
-        print(self.mean, self.stddev, x)
         """ Calculates the cdf of a given x in the normal distribution.
         Params:
             x (float | int) the upper limit
@@ -80,7 +79,7 @@ class Normal:
         """
         z = (x - self.mean) / (self.stddev * self.__sqrt(2))
         return 0.5 * (1 + self.__erf(z))
-    
+
     def __erf(self, x):
         """
         Error function approximation using Maclaurin series expansion.
@@ -91,26 +90,6 @@ class Normal:
         # Maclaurin series expansion for erf(x)
         inner_sum = sum(a[i] * (x ** i) for i in range(1, 5))
         return 1.0 - (1.0 / (1.0 + inner_sum)) * (2.0 / (self.__sqrt(pi))) * e ** (-x ** 2)
-
-    # def __erf(self, z):
-    #     """ Calculates the error function for a given z value
-    #     """
-    #     return 2 / self.__sqrt(pi) * self.__integral(lambda t: e ** -(t ** 2), 0, z, 0.0001)
-
-    def __integral(self, function, lower, upper, interval):
-        """ Function to approximate the integral of a given function.
-        It provides the integral from the given lower limit, to the
-        given upper limit. The approximation is done at regular, 
-        specified intervals.
-        """
-        integral = 0
-        count = lower
-
-        while count < upper:
-            integral += (interval * function(count))
-            count += interval
-
-        return integral
 
     def __sqrt(self, x):
         """ Function to calculate the square root of a given number x.
