@@ -77,7 +77,7 @@ class Normal:
         Returns:
             (float | int) the cumulative probability
         """
-        interval_width = 0.01
+        interval_width = 0.001
 
         if x > 0:
             bars = self.__frange(0, x, interval_width)
