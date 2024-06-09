@@ -97,6 +97,7 @@ class Normal:
 
         while count < upper:
             integral += interval * function(count)
+            count += interval
 
         return integral
 
