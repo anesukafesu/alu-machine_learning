@@ -71,7 +71,7 @@ class Normal:
         return numerator / denominator
 
     def cdf(self, x):
-        print(self.mean, self.stddev, self.x)
+        print(self.mean, self.stddev, x)
         """ Calculates the cdf of a given x in the normal distribution.
         Params:
             x (float | int) the upper limit
