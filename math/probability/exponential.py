@@ -26,4 +26,4 @@ class Exponential:
             if len(data) < 2:
                 raise ValueError('data must contain multiple values')
 
-            self.lambtha = sum(data) / len(data)
+            self.lambtha = len(data) / sum(data)
