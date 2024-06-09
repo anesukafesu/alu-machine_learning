@@ -71,6 +71,7 @@ class Normal:
         return numerator / denominator
 
     def cdf(self, x):
+        print(self.mean, self.stddev, self.x)
         """ Calculates the cdf of a given x in the normal distribution.
         Params:
             x (float | int) the upper limit
@@ -96,7 +97,6 @@ class Normal:
         count = lower
 
         while count < upper:
-            print(integral)
             integral += (interval * function(count))
             count += interval
 
