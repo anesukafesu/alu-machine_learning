@@ -13,7 +13,6 @@ class Binomial:
             n (int | none): Number of trials
             p (float | none): The probability of success in each trial
         """
-        print(data, n, p)
         if data is None:
             if n <= 0:
                 raise ValueError('n must be a positive value')
@@ -29,12 +28,12 @@ class Binomial:
             if len(data) < 2:
                 raise ValueError('data must contain multiple values')
             
-            x_bar = sum(data) / len(data)
-            variance = sum(map(lambda x: (x - x_bar) ** 2, data)) / len(data)
-            q = variance / x_bar
+            sample_mean = sum(data) / len(data)
+            sample_variance = sum(map(lambda x: (x - sample_mean) ** 2, data)) / len(data) - 1
+            q = sample_variance / sample_mean
 
             self.p = 1 - q
-            self.n = round(x_bar / p)
+            self.n = round(sample_mean / self.p)
 
     def __sqrt(self, x):
         """ Function to calculate the square root of a given number x.
