@@ -78,7 +78,19 @@ class Normal:
         Returns:
             (float | int) the cumulative probability
         """
-        return (1 + self.__erf((x - self.mean) / (self.stddev * self.__sqrt(2)))) / 2
+        z = (x - self.mean) / (self.stddev * self.__sqrt(2))
+        return 0.5 * (1 + self.__erf(z))
+    
+    def __erf(self, x):
+        """
+        Error function approximation using Maclaurin series expansion.
+        """
+        # Coefficients for the series expansion
+        a = [1.0, 0.278393, 0.230389, 0.000972, 0.078108]
+
+        # Maclaurin series expansion for erf(x)
+        inner_sum = sum(a[i] * (x ** i) for i in range(1, 5))
+        return 1.0 - (1.0 / (1.0 + inner_sum)) * (2.0 / (self.__sqrt(pi))) * e ** (-x ** 2)
 
         
 
