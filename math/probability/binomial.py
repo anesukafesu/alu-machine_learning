@@ -95,7 +95,7 @@ class Binomial:
         Returns:
             (int) the number of combinations that can be made
         """
-        return self.__fact(n) / self.__fact(k) * self.__fact(n - k)
+        return self.__fact(n) / (self.__fact(k) * self.__fact(n - k))
 
     def __fact(self, n):
         """ Calculates the factorial of a given number n.
