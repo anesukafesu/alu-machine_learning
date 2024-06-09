@@ -80,7 +80,6 @@ class Normal:
         interval_width = 0.001
 
         area = self.__integral(self.pdf, self.mean, abs(x), interval_width)
-        print(area)
 
         if x > self.mean:
             return 0.5 + area
@@ -88,6 +87,7 @@ class Normal:
             return 0.5 - area
 
     def __integral(self, function, lower, upper, interval):
+        print(lower, upper, interval)
         """ Function to approximate the integral of a given function.
         It provides the integral from the given lower limit, to the
         given upper limit. The approximation is done at regular, 
@@ -97,7 +97,7 @@ class Normal:
         count = lower
 
         while count < upper:
-            integral += interval * function(count)
+            integral += (interval * function(count))
             count += interval
 
         return integral
