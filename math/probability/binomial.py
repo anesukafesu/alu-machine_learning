@@ -82,14 +82,14 @@ class Binomial:
 
         if k < 0:
             return 0
-    
+
         return sum(map(lambda x: self.pmf(x), range(0, k + 1)))
 
     def __choose(self, n, k):
         """ Function that calculates the number of k combinations
         that can be made from n.
         Args:
-            n (int): the size of the set from which combinations 
+            n (int): the size of the set from which combinations
             are to be drawn
             k (int): the size of each combination to be drawn from the set
         Returns:
