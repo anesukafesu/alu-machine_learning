@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ Implements the Normal class
 """
-π = 3.1415926536
+pi = 3.1415926536
 e = 2.7182818285
 
 
@@ -66,7 +66,7 @@ class Normal:
         z_score = self.z_score(x)
 
         numerator = e ** (-(z_score ** 2) / 2)
-        denominator = self.stddev * self.__sqrt(2 * π)
+        denominator = self.stddev * self.__sqrt(2 * pi)
 
         return numerator / denominator
 
@@ -78,14 +78,14 @@ class Normal:
         Returns:
             (float | int) the cumulative probability
         """
-        interval_width = 0.001
+        return (1 + self.__erf((x - self.mean) / (self.stddev * self.__sqrt(2)))) / 2
 
-        area = self.__integral(self.pdf, self.mean, abs(x), interval_width)
+        
 
-        if x > self.mean:
-            return 0.5 + area
-        else:
-            return 0.5 - area
+    def __erf(self, z):
+        """ Calculates the error function for a given z value
+        """
+        return 2 / self.__sqrt(pi) * self.__integral(lambda t: e ** -(t ** 2), 0, z, 0.0001)
 
     def __integral(self, function, lower, upper, interval):
         """ Function to approximate the integral of a given function.
@@ -101,24 +101,6 @@ class Normal:
             count += interval
 
         return integral
-
-    def __frange(self, start, end, step):
-        """ Function to generate range using floating point numbers
-        Args:
-            start (float | int): starting point of the range
-            end (float | int): exclusive ending point of the range
-            step (float | int): the absolute difference between each value and the next
-        Returns:
-            (list[float | int]): the values in the range specified
-        """
-        i = start
-        values = []
-
-        while i < end:
-            values.append(i)
-            i += step
-        
-        return values
 
     def __sqrt(self, x):
         """ Function to calculate the square root of a given number x.
