@@ -87,7 +87,6 @@ class Normal:
             return 0.5 - area
 
     def __integral(self, function, lower, upper, interval):
-        print(lower, upper, interval)
         """ Function to approximate the integral of a given function.
         It provides the integral from the given lower limit, to the
         given upper limit. The approximation is done at regular, 
@@ -97,6 +96,7 @@ class Normal:
         count = lower
 
         while count < upper:
+            print(integral)
             integral += (interval * function(count))
             count += interval
 
