@@ -79,15 +79,26 @@ class Normal:
         """
         interval_width = 0.001
 
-        if x > 0:
-            bars = self.__frange(0, x, interval_width)
-            areas = map(lambda bar: self.pdf(bar) * interval_width, bars)
-            return 0.5 + sum(areas)
-        else:
-            bars = self.__frange(x, 0, interval_width)
-            areas = map(lambda bar: self.pdf(bar) * interval_width, bars)
-            return 0.5 - sum(areas)
+        area = self.__integral(self.pdf, 0, abs(x), interval_width)
 
+        if x > 0:
+            return 0.5 + area
+        else:
+            return 0.5 - area
+
+    def __integral(self, function, lower, upper, interval):
+        """ Function to approximate the integral of a given function.
+        It provides the integral from the given lower limit, to the
+        given upper limit. The approximation is done at regular, 
+        specified intervals.
+        """
+        integral = 0
+        count = lower
+
+        while count < upper:
+            integral += interval * function(count)
+
+        return integral
 
     def __frange(self, start, end, step):
         """ Function to generate range using floating point numbers
