@@ -77,27 +77,17 @@ class Normal:
         Returns:
             (float | int) the cumulative probability
         """
-        # This function requires integration, which we are not going to do
-        # Instead we will approximate the area under the function by
-        # 1. Sampling the function at different points
-        # 2. Calculating the height at each of these points using the self.pdf
-        # 3. Multiply the height of each point with the interval_width to get approximate area
-        # 4. Add up these areas to get approximate total area under the curve
-        # To do this, we need two parameters, a lower bound for integration since 
-        # starting from -infinity is impractical and computationally expensive
-        # The lower the lower_bound, the more accurate the approximation, but with diminishing
-        # returns.
-        # We also need an interval_width that determines the sample frequency.
-        # The lower the frequency, the more accurate the approximation, also with diminishing
-        # returns
-        parameters = {
-            'interval_width': 0.0001,
-            'lower_bound': -10,
-        }
+        interval_width = 0.01
 
-        lower_x_value = self.x_value(parameters['lower_bound'])
-        samples = self.__frange(lower_x_value, x, parameters['interval_width'])
-        return sum(map(lambda z: self.pdf(z) * parameters['interval_width'], samples))
+        if x > 0:
+            bars = self.__frange(0, x, interval_width)
+            areas = map(lambda bar: self.pdf(bar) * interval_width, bars)
+            return 0.5 + sum(areas)
+        else:
+            bars = self.__frange(x, 0, interval_width)
+            areas = map(lambda bar: self.pdf(bar) * interval_width, bars)
+            return 0.5 - sum(areas)
+
 
     def __frange(self, start, end, step):
         """ Function to generate range using floating point numbers
