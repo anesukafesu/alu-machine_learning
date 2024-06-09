@@ -33,17 +33,24 @@ class Binomial:
             # Calculate the sample mean = np
             sample_mean = sum(data) / len(data)
 
-            # # Calculate the sample variance = npq
-            # sample_variance = sum(map(lambda x: x ** 2, data)) / len(data) - sample_mean ** 2
+            # Calculate the sample variance = npq
+            sample_variance = sum(map(lambda x: x ** 2, data)) / len(data) - sample_mean ** 2
 
-            # # q = npq / np = sample_variance / sample_mean
-            # q = sample_variance / sample_mean
+            # q = npq / np = sample_variance / sample_mean
+            q = sample_variance / sample_mean
 
-            # p = 1 - q
-            self.p = sample_mean / max(data)
+            # q is the complement of p
+            p = 1 - q
 
-            # n = np / p
-            self.n = round(sample_mean / self.p)
+            # n = np / n = sample_mean / p
+            n = round(sample_mean / p)
+
+            # recalculate p since we rounded off n
+            p = sample_mean / n
+
+            # store the params
+            self.n = n
+            self.p = p
 
     def pmf(self, k):
         """ Calculates the PMF of a given number of successes
