@@ -40,7 +40,7 @@ class Exponential:
             return 0
         else:
             return self.lambtha * e ** (-self.lambtha * x)
-        
+
     def cdf(self, x):
         """ Calculates the cdf of a given x value
         Args:
