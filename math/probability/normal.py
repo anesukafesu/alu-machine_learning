@@ -77,19 +77,11 @@ class Normal:
         Returns:
             (float | int) the cumulative probability
         """
-        z = (x - self.mean) / (self.stddev * self.__sqrt(2))
-        return 0.5 * (1 + self.__erf(z))
+        z = (x - self.mean) / (self.stddev * (2 ** 0.5))
+        t = z - (z ** 3) / 3 + (z ** 5) / 10 - (z ** 7) / 42 + (z ** 9) / 216
+        cdf = 0.5 * (1 + (2 / (pi ** 0.5)) * t)
 
-    def __erf(self, x):
-        """
-        Error function approximation using Maclaurin series expansion.
-        """
-        # Coefficients for the series expansion
-        a = [1.0, 0.278393, 0.230389, 0.000972, 0.078108]
-
-        # Maclaurin series expansion for erf(x)
-        inner_sum = sum(a[i] * (x ** i) for i in range(1, 5))
-        return 1.0 - (1.0 / (1.0 + inner_sum)) * (2.0 / (self.__sqrt(pi))) * e ** (-x ** 2)
+        return cdf
 
     def __sqrt(self, x):
         """ Function to calculate the square root of a given number x.
