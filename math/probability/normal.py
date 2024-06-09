@@ -92,12 +92,10 @@ class Normal:
         inner_sum = sum(a[i] * (x ** i) for i in range(1, 5))
         return 1.0 - (1.0 / (1.0 + inner_sum)) * (2.0 / (self.__sqrt(pi))) * e ** (-x ** 2)
 
-        
-
-    def __erf(self, z):
-        """ Calculates the error function for a given z value
-        """
-        return 2 / self.__sqrt(pi) * self.__integral(lambda t: e ** -(t ** 2), 0, z, 0.0001)
+    # def __erf(self, z):
+    #     """ Calculates the error function for a given z value
+    #     """
+    #     return 2 / self.__sqrt(pi) * self.__integral(lambda t: e ** -(t ** 2), 0, z, 0.0001)
 
     def __integral(self, function, lower, upper, interval):
         """ Function to approximate the integral of a given function.
