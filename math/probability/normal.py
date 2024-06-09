@@ -71,7 +71,6 @@ class Normal:
         return numerator / denominator
 
     def cdf(self, x):
-        print(x)
         """ Calculates the cdf of a given x in the normal distribution.
         Params:
             x (float | int) the upper limit
@@ -80,9 +79,10 @@ class Normal:
         """
         interval_width = 0.001
 
-        area = self.__integral(self.pdf, 0, abs(x), interval_width)
+        area = self.__integral(self.pdf, self.mean, abs(x), interval_width)
+        print(area)
 
-        if x > 0:
+        if x > self.mean:
             return 0.5 + area
         else:
             return 0.5 - area
