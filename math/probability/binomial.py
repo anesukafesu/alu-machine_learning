@@ -33,14 +33,14 @@ class Binomial:
             # Calculate the sample mean = np
             sample_mean = sum(data) / len(data)
 
-            # Calculate the sample variance = npq
-            sample_variance = sum(map(lambda x: x ** 2, data)) / len(data) - sample_mean ** 2
+            # # Calculate the sample variance = npq
+            # sample_variance = sum(map(lambda x: x ** 2, data)) / len(data) - sample_mean ** 2
 
-            # q = npq / np = sample_variance / sample_mean
-            q = sample_variance / sample_mean
+            # # q = npq / np = sample_variance / sample_mean
+            # q = sample_variance / sample_mean
 
             # p = 1 - q
-            self.p = 1 - q
+            self.p = sample_mean / max(data)
 
             # n = np / p
             self.n = round(sample_mean / self.p)
