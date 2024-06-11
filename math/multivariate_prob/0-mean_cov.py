@@ -13,7 +13,7 @@ def mean_cov(X):
         cov (numpy.ndarray): A 2D array representing the covariance
         of the dataset
     """
-    if not isinstance(X, np.ndarray) or X.ndims != 2:
+    if not isinstance(X, np.ndarray) or X.ndim != 2:
         raise TypeError('X must be a 2D numpy.ndarray')
 
     if X.shape[0] < 2:
