@@ -21,6 +21,6 @@ def mean_cov(X):
 
     mean = np.mean(X, axis=0).reshape(1, -1)
     stdevs = X - mean
-    cov = stdevs * stdevs.T
+    cov = stdevs @ stdevs.T
 
     return mean, cov
