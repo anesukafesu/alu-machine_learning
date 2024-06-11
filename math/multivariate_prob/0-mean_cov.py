@@ -13,13 +13,14 @@ def mean_cov(X):
         cov (numpy.ndarray): A 2D array representing the covariance
         of the dataset
     """
-    if len(X.shape) != 2:
+    if not isinstance(X, np.ndarray) or X.ndims != 2:
         raise TypeError('X must be a 2D numpy.ndarray')
 
     if X.shape[0] < 2:
         raise ValueError('X must contain multiple data points')
 
     mean = np.mean(X, axis=0).reshape(1, -1)
-    cov = np.cov(X, rowvar=False)
+    stdevs = X - mean
+    cov = stdevs * stdevs.T
 
     return mean, cov
