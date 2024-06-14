@@ -21,6 +21,6 @@ def mean_cov(X):
 
     mean = np.mean(X, axis=0).reshape(1, -1)
     deviations = X - mean
-    cov = np.matmul(deviations, deviations.T)
+    cov = np.matmul(deviations.T, deviations)
 
     return mean, cov
