@@ -22,7 +22,7 @@ def mean_cov(X):
         raise ValueError('X must contain multiple data points')
 
     mean = np.mean(X, axis=0).reshape(1, -1)
-    deviations = (X - mean) / n
-    cov = np.matmul(deviations.T, deviations)
+    deviations = X - mean
+    cov = np.matmul(deviations.T, deviations) / n
 
     return mean, cov
