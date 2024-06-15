@@ -18,7 +18,14 @@ def correlation(C):
 
     if C.ndim != 2 or C.shape[0] != C.shape[1]:
         raise ValueError('C must be a 2D square matrix')
+    
+    d = C.shape[0]
 
-    stddevs = np.std(C, axis=0).reshape(1, -1)
+    stddevs = []
+
+    for i in range(d):
+        stddevs.append(C[i, i])
+
+    stddevs = np.array(stddevs).reshape(1, -1)
 
     return C / (stddevs.T @ stddevs)
