@@ -24,7 +24,7 @@ def correlation(C):
     stddevs = []
 
     for i in range(d):
-        stddevs.append(C[i, i])
+        stddevs.append(np.sqrt(C[i, i]))
 
     stddevs = np.array(stddevs).reshape(1, -1)
 
