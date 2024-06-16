@@ -33,7 +33,7 @@ class MultiNormal:
             raise TypeError('x must be numpy.ndarray')
         
         if x.ndim != 2 or x.shape[0] != self.d or x.shape[1] != 1:
-            raise ValueError(f'x must have shape ({self.d}, 1)')
+            raise ValueError('x must have shape ({}, 1)'.format(self.d))
 
         variation = x - self.mean
         numerator = np.exp(-0.5 * variation.T * self.inv_cov * variation)
