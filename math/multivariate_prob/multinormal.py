@@ -37,7 +37,7 @@ class MultiNormal:
             raise ValueError('x must have the shape ({}, 1)'.format(self.d))
 
         variation = x - self.mean
-        numerator = np.exp(-0.5 * (variation.T @ self.inv_cov) @ variation)
-        denominator = np.sqrt((2 * np.pi) ** (self.d / 2) * self.cov_det)
+        numerator = np.exp(-0.5 * ((variation.T @ self.inv_cov) @ variation))
+        denominator = np.sqrt((2 * np.pi) ** self.d * self.cov_det)
 
         return numerator / denominator
