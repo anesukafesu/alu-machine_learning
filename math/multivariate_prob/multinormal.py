@@ -22,3 +22,14 @@ class MultiNormal:
 
         self.mean = mean
         self.cov = deviations @ deviations.T / (n - 1)
+        self.inv_cov = np.linalg.inv(self.cov)
+
+    def pdf(self, x):
+        """ Calculates the probability density of x
+        """
+        variation = x - self.mean
+        d, = np.shape
+        numerator = np.exp(-0.5 * variation.T * self.inv_cov * variation)
+        denominator = (2 * np.pi) ** (d / 2) * np.linalg.det(self.cov) ** 0.5
+
+        return numerator / denominator
