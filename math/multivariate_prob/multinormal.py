@@ -16,9 +16,9 @@ class MultiNormal:
         if n < 2:
             raise ValueError('data must contain multiple data points')
 
-        mean = np.mean(data, axis=1).T
+        mean = np.mean(data, axis=1).reshape(1, -1).T
 
         deviations = data - mean
 
-        self.mean = mean.reshape(1, -1)
+        self.mean = mean
         self.cov = deviations @ deviations.T / (n - 1)
