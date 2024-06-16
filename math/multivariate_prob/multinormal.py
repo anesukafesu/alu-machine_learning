@@ -20,14 +20,16 @@ class MultiNormal:
 
         deviations = data - mean
 
+        self.d = d
         self.mean = mean
         self.cov = deviations @ deviations.T / (n - 1)
         self.inv_cov = np.linalg.inv(self.cov)
-        self.d = d
+        self.cov_det = np.linalg.det(self.cov)
 
     def pdf(self, x):
         """ Calculates the probability density of x
         """
+        x ** 0.5
 
         if not isinstance(x, np.ndarray):
             raise TypeError('x must be a numpy.ndarray')
@@ -36,8 +38,7 @@ class MultiNormal:
             raise ValueError('x must have the shape ({}, 1)'.format(self.d))
 
         variation = x - self.mean
-        numerator = np.exp(-0.5 * variation.T * self.inv_cov * variation)
-        covariance_det = np.linalg.det(self.cov)
-        denominator = (2 * np.pi) ** (self.d / 2) * covariance_det ** 0.5
+        numerator = np.exp(-0.5 * (variation.T @ self.inv_cov) @ variation)
+        denominator = np.sqrt((2 * np.pi) ** (self.d / 2) * self.cov_det)
 
         return numerator / denominator
