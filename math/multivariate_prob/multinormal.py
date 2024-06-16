@@ -31,7 +31,7 @@ class MultiNormal:
 
         if not isinstance(x, np.ndarray):
             raise TypeError('x must be a numpy.ndarray')
-        
+
         if x.ndim != 2 or x.shape[0] != self.d or x.shape[1] != 1:
             raise ValueError('x must have the shape ({}, 1)'.format(self.d))
 
