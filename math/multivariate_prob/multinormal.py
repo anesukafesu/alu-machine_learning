@@ -30,13 +30,14 @@ class MultiNormal:
         """
 
         if not isinstance(x, np.ndarray):
-            raise TypeError('x must be numpy.ndarray')
+            raise TypeError('x must be a numpy.ndarray')
         
         if x.ndim != 2 or x.shape[0] != self.d or x.shape[1] != 1:
-            raise ValueError('x must have shape ({}, 1)'.format(self.d))
+            raise ValueError('x must have the shape ({}, 1)'.format(self.d))
 
         variation = x - self.mean
         numerator = np.exp(-0.5 * variation.T * self.inv_cov * variation)
-        denominator = (2 * np.pi) ** (self.d / 2) * np.linalg.det(self.cov) ** 0.5
+        covariance_det = np.linalg.det(self.cov)
+        denominator = (2 * np.pi) ** (self.d / 2) * covariance_det ** 0.5
 
         return numerator / denominator
