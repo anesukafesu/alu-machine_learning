@@ -29,7 +29,6 @@ class MultiNormal:
     def pdf(self, x):
         """ Calculates the probability density of x
         """
-        x ** 0.5
 
         if not isinstance(x, np.ndarray):
             raise TypeError('x must be a numpy.ndarray')
