@@ -16,7 +16,7 @@ class MultiNormal:
         if n < 2:
             raise ValueError('data must contain multiple data points')
 
-        mean = np.mean(data, axis=1)
+        mean = np.mean(data, axis=1).reshape(1, -1)
 
         deviations = data - mean
 
