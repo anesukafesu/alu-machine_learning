@@ -27,7 +27,7 @@ def likelihood(x, n, P):
     if not isinstance(P, np.ndarray) or P.ndim != 1:
         raise TypeError('P must be a 1D numpy.ndarray')
 
-    if not np.all(P >= 0 & P <= 1):
+    if not np.all((P >= 0) & (P <= 1)):
         raise ValueError('All values in P must be in range [0, 1]')
 
     return np.choose(n, x) * P ** x * (1 - P) ** (n - x)
