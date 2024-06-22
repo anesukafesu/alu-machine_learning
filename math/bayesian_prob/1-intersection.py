@@ -13,6 +13,19 @@ def intersection(x, n, P, Pr):
         P (numpy.ndarray) the list of different hypothetical probabilies
         Pr (numpy.ndarray) the list of different priors
     """
+    __validate_params(x, n, P, Pr)
+    return Pr * __likelihood(x, n, P)
+
+
+def __validate_params(x, n, P, Pr):
+    """ Function to validate parameters
+
+    Args:
+        x (int) the number of patients who develop side-effects
+        n (int) the number of patients who have taken the drug
+        P (numpy.ndarray) the list of different hypothetical probabilies
+        Pr (numpy.ndarray) the list of different priors
+    """
     if not isinstance(n, int) or n <= 0:
         raise ValueError('n must be a positive integer')
 
@@ -37,8 +50,6 @@ def intersection(x, n, P, Pr):
 
     if not np.isclose(np.sum(Pr), 1):
         raise ValueError('Pr must sum to 1')
-
-    return Pr * __likelihood(x, n, P)
 
 
 def __likelihood(x, n, P):

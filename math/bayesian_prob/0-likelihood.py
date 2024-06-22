@@ -15,6 +15,19 @@ def likelihood(x, n, P):
     Returns:
         numpy.ndarray the list of different likelihoods
     """
+    __validate_params(x, n, P)
+    return __choose(n, x) * P ** x * (1 - P) ** (n - x)
+
+
+def __validate_params(x, n, P):
+    """ Function to validate params
+
+    Args:
+        x (int) the number of patients who develop side-effects
+        n (int) the number of patients who have taken the drug
+        P (numpy.ndarray) the list of different hypothetical probabilies
+        Pr (numpy.ndarray) the list of different priors
+    """
     if not isinstance(n, int) or n <= 0:
         raise ValueError('n must be a positive integer')
 
@@ -30,8 +43,6 @@ def likelihood(x, n, P):
 
     if not np.all((P >= 0) & (P <= 1)):
         raise ValueError('All values in P must be in the range [0, 1]')
-
-    return __choose(n, x) * P ** x * (1 - P) ** (n - x)
 
 
 def __choose(n, x):
