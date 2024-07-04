@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-import numpy as np
 """ Implements the convolve_grayscale_valid function
 """
+import numpy as np
 
 
 def convolve_grayscale_valid(images, kernel):
