@@ -5,7 +5,8 @@ import numpy as np
 
 
 def convolve_grayscale_same(images, kernel):
-    """ Function to perform a valid convolution on grayscale images
+    """ Function to perform a valid convolution on grayscale images.
+    Convolved image will have same size as input images
     Args:
         images (numpy.ndarray) a list of images in the shape (m, h, w)
         kernel (numpy.ndarray) an image in the shape of (kh, kw)
@@ -15,8 +16,8 @@ def convolve_grayscale_same(images, kernel):
     kh, kw = kernel.shape
 
     # Calculate padding
-    ph = kh - 1 // 2
-    pw = kw - 1 // 2
+    ph = kh // 2
+    pw = kw // 2
 
     # Apply padding
     padded_images = np.pad(images, ((0,), (ph,), (pw,)), mode='constant')
