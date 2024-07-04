@@ -19,7 +19,7 @@ def convolve_grayscale_same(images, kernel):
     pw = kw - 1 // 2
 
     # Apply padding
-    padded_images = np.pad(images, ((ph, ph), (pw, pw)), mode='constant')
+    padded_images = np.pad(images, ((0, 0), (ph, ph), (pw, pw)), mode='constant')
 
     # Creating an array of convolved images
     convolved_images = np.ones((m, h, w))
