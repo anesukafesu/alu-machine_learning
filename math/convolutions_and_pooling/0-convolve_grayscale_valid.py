@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 import numpy as np
+""" Implements the convolve_grayscale_valid function
+"""
 
 
 def convolve_grayscale_valid(images, kernel):
@@ -13,15 +15,16 @@ def convolve_grayscale_valid(images, kernel):
     kh, kw = kernel.shape
 
     # Calculating convolved image dimensions
-    ch = h - kh + 1
-    cw = w - kw + 1
+    oh = h - kh + 1
+    ow = w - kw + 1
 
     # Creating an array of convolved images
-    convolved_images = np.ones((m, ch, cw))
+    convolved_images = np.ones((m, oh, ow))
 
     # Loop through images applying kernel to calculate convolutions
-    for i in range(ch):
-        for j in range(cw):
-            convolved_images[i, j] = np.sum(images[:, i: i + kh, j: j + kw] * kernel)
+    for i in range(oh):
+        for j in range(ow):
+            patch = images[:, i: i + kh, j: j + kw]
+            convolved_images[i, j] = np.sum(patch * kernel)
 
     return convolved_images
