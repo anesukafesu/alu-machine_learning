@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Implements the convolve_grayscale_valid function
+""" Implements the convolve_grayscale_same function
 """
 import numpy as np
 
@@ -16,14 +16,14 @@ def convolve_grayscale_same(images, kernel):
     kh, kw = kernel.shape
 
     # Calculate padding
-    ph = kh // 2
-    pw = kw // 2
+    ph = (kh - 1) / 2
+    pw = (kw - 1) / 2
 
     # Apply padding
     padded_images = np.pad(images, ((0,), (ph,), (pw,)), mode='constant')
 
     # Creating an array of convolved images
-    convolved_images = np.ones((m, h, w))
+    convolved_images = np.zeros((m, h, w))
 
     # Loop through images applying kernel to calculate convolutions
     for i in range(h):
