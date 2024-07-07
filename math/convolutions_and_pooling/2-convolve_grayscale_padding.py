@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Implements the convolve_grayscale_valid function
+""" Implements the convolve_grayscale_padding function
 """
 import numpy as np
 
@@ -21,12 +21,12 @@ def convolve_grayscale_padding(images, kernel, padding):
     m, h, w = padded_images.shape
     kh, kw = kernel.shape
 
-    # Calculate size of images
+    # Calculate size of output images
     oh = h - kh + 1
     ow = w - kw + 1
 
     # Creating an array of convolved images
-    convolved_images = np.ones((m, oh, ow))
+    convolved_images = np.zeros((m, oh, ow))
 
     # Loop through images applying kernel to calculate convolutions
     for i in range(oh):
