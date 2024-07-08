@@ -18,7 +18,7 @@ def convolve_channels(images, kernel, padding='same', stride=(1, 1)):
     """
     # Extract image and kernel shapes
     m, h, w, c = images.shape
-    kh, kw = kernel.shape
+    kh, kw, kc = kernel.shape
 
     # Extract stride values
     sh, sw = stride
