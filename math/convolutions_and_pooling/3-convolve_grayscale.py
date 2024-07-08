@@ -46,8 +46,8 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
     convolved_images = np.zeros((m, oh, ow))
 
     # Convolve the images
-    for i in range(oh * sh, sh):
-        for j in range(ow * sw, sw):
+    for i in range(0, oh * sh, sh):
+        for j in range(0, ow * sw, sw):
             patch = padded_images[:, i: i + kh, j: j + kw]
             element = np.sum(patch * kernel, axis=(1, 2))
             convolved_images[:, i // sh, j // sw] = element
