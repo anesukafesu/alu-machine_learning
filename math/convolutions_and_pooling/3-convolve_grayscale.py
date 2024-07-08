@@ -29,14 +29,11 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
     if padding == 'same':
         ph = calculate_padding_for_same_convolution(h, kh, sh)
         pw = calculate_padding_for_same_convolution(w, kw, sw)
-    elif padding == 'valid':
-        ph = calculate_padding_for_valid_convolution(h, kh, sh)
-        pw = calculate_padding_for_valid_convolution(w, kw, sw)
-    else:
+    elif isinstance(padding, tuple):
         ph, pw = padding
 
     # Pad the images
-    padded_images = np.pad(images, ((0,), (ph,), (pw,)), mode='constant')
+    padded_images = np.pad(images, ((0,), (ph,), (pw,)), mode='constant', constant_values=0)
 
     # New image dimensions
     m, h, w = padded_images.shape
@@ -68,6 +65,7 @@ def calculate_output_size(dimension_size, kernel_dize, stride):
     """
     return (dimension_size - kernel_dize) // stride + 1
 
+
 def calculate_padding_for_same_convolution(dimension_size, kernel_size, stride):
     """ Calculates the padding to be added to a dimension for a same convolution
     Args:
@@ -77,22 +75,4 @@ def calculate_padding_for_same_convolution(dimension_size, kernel_size, stride):
     Returns:
         (int) The padding to be applied to the dimension
     """
-    return (stride * (dimension_size - 1) + kernel_size - dimension_size) // 2
-
-
-def calculate_padding_for_valid_convolution(dimension_size, kernel_size, stride):
-    """ Calculates the padding to be added to a dimension for a valid convolution
-    Args:
-        dimension_size (int) The size of the dimension
-        kernel_size (int) The size of the kernel in that dimension
-        stride (int) The stride with which to move in the dimension
-    Returns:
-        (int) The padding to be applied to the dimension
-    """
-    mod = (dimension_size - kernel_size) % stride
-    padding = 0
-
-    if mod != 0:
-        padding = stride - mod
-
-    return padding // 2
+    return (stride * (dimension_size - 1) + kernel_size - dimension_size) // 2 + 1
