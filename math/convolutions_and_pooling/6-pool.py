@@ -38,7 +38,7 @@ def pool(images, kernel_shape, stride, mode='max'):
             if mode == 'max':
                 result = np.max(patch, axis=(1, 2))
             elif mode == 'avg':
-                result = np.avg(patch, axis=(1, 2))
+                result = np.average(patch, axis=(1, 2))
 
             pooled_images[:, i // sh, j // sw, :] = result
 
