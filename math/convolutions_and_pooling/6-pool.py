@@ -41,7 +41,7 @@ def pool(images, kernel_shape, stride, mode='max'):
                 result = np.avg(patch, axis=(1, 2))
             
             pooled_images[:, i // sh, j // sw, :] = result
-    
+
     return pooled_images
 
 
