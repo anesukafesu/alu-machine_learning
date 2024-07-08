@@ -33,7 +33,7 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
         ph, pw = padding
 
     # Pad the images
-    padded_images = np.pad(images, ((0,), (ph,), (pw,)), mode='constant', constant_values=0)
+    padded_images = np.pad(images, ((0,), (ph,), (pw,)))
 
     # New image dimensions
     m, h, w = padded_images.shape
@@ -46,33 +46,34 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
     convolved_images = np.zeros((m, oh, ow))
 
     # Convolve the images
-    for i in range(oh):
-        for j in range(ow):
-            patch = padded_images[:, i * sh: i * sh + kh, j * sw: j * sw + kw]
+    for i in range(oh * sh, sh):
+        for j in range(ow * sw, sw):
+            patch = padded_images[:, i: i + kh, j: j + kw]
             convolved_images[:, i, j] = np.sum(patch * kernel, axis=(1, 2))
 
     return convolved_images
 
 
-def calculate_output_size(dimension_size, kernel_dize, stride):
+def calculate_output_size(n, k, s):
     """ Calculates the size of the output after applying a convolution
     Args:
-        dimension_size (int) The size of the dimension
-        kernel_size (int) The size of the kernel in said dimension
-        stride (int) The stride with which to move in the dimension
+        n (int) The size of the dimension
+        k(int) The size of the kernel in said dimension
+        s (int) The stride with which to move in the dimension
     Returns:
         (int) The size of the dimension after applyint the convolution
     """
-    return (dimension_size - kernel_dize) // stride + 1
+    return (n - k) // s + 1
 
 
-def calculate_padding_for_same_convolution(dimension_size, kernel_size, stride):
-    """ Calculates the padding to be added to a dimension for a same convolution
+def calculate_padding_for_same_convolution(n, k, s):
+    """ Calculates the padding to be added to a dimension
+    for a same convolution
     Args:
-        dimension_size (int) The size of the dimension
-        kernel_size (int) The size of the kernel in said dimension
-        stride (int) The stride with which to move in the dimension
+        n (int) The size of the dimension
+        k (int) The size of the kernel in said dimension
+        s (int) The stride with which to move in the dimension
     Returns:
         (int) The padding to be applied to the dimension
     """
-    return (stride * (dimension_size - 1) + kernel_size - dimension_size) // 2 + 1
+    return (s * (n - 1) + k - n) // 2 + 1
