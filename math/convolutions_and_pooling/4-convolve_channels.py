@@ -40,8 +40,8 @@ def convolve_channels(images, kernel, padding='same', stride=(1, 1)):
     m, h, w, c = padded_images.shape
 
     # Calculate image output dimensions
-    oh = calculate_output_size(h, kh, sh, c)
-    ow = calculate_output_size(w, kw, sw, c)
+    oh = calculate_output_size(h, kh, sh)
+    ow = calculate_output_size(w, kw, sw)
 
     # Create the output image array
     convolved_images = np.zeros((m, oh, ow))
