@@ -8,7 +8,7 @@ def pool(images, kernel_shape, stride, mode='max'):
     """ Function to perform pooling on a set of images
     Args:
         images (numpy.ndarray) the set of images as a numpy array
-        kernel_shape (tuple) the shape of the kernel to be used 
+        kernel_shape (tuple) the shape of the kernel to be used
             to get numbers from the kernel
         stride (tuple) the stride by which to move
         mode ('max' | 'avg') the mode by which to perform the pooling
@@ -30,8 +30,8 @@ def pool(images, kernel_shape, stride, mode='max'):
     pooled_images = np.zeros((m, oh, ow, c))
 
     # Pool the images
-    for i in range(oh * sh, sh):
-        for j in range(ow * sw, sw):
+    for i in range(0, oh * sh, sh):
+        for j in range(0, ow * sw, sw):
             patch = images[:, i: i + kh, j: j + kw, :]
             result = 0
 
@@ -39,7 +39,7 @@ def pool(images, kernel_shape, stride, mode='max'):
                 result = np.max(patch, axis=(1, 2))
             elif mode == 'avg':
                 result = np.avg(patch, axis=(1, 2))
-            
+
             pooled_images[:, i // sh, j // sw, :] = result
 
     return pooled_images
