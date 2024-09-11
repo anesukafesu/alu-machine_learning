@@ -31,7 +31,6 @@ class Neuron:
     def A(self):
         return self.__A
 
-
     def __sigmoid(self, Z):
         """ Calculates the sigmoid of a number or numpy array
         Args:
@@ -41,13 +40,12 @@ class Neuron:
         """
         return 1 / (1 + np.exp(-Z))
 
-
     def forward_prop(self, X):
         """ Calculates the forward propagation for X using the
         sigmoid activation function
         Args:
-            X (numpy.ndarray): input in the shape (nx, m) where nx is 
-            the number of input features and m is the number of 
+            X (numpy.ndarray): input in the shape (nx, m) where nx is
+            the number of input features and m is the number of
             training examples
         Returns:
             A: The activation
