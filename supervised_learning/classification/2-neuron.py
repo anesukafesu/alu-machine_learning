@@ -53,7 +53,7 @@ class Neuron:
             A: The activation
         """
         # z = wx + b
-        Z = self.__W * X + self.__b
+        Z = self.__W @ X + self.__b
 
         # a = sigmoid(z)
         A = self.__sigmoid(Z)
