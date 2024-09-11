@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
-""" Implements the convolve_grayscale_valid function
+""" Implements the convolve_channels function
 """
 import numpy as np
 
 
-def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
-    """ Convolves a set of images using kernel, padding and stride
+def convolve(images, kernels, padding='same', stride=(1, 1)):
+    """ Convolves a set of multi-channel images using different
+    multiple kernels, padding, and stride
     Args:
-        images (numpy.ndarray) the set of images in shape m, h, w
+        images (numpy.ndarray) the set of images in shape m, h, w, c
         kernel (numpy.ndarray) the kernel to apply on the images
         padding (string | tuple) the padding to apply e.g. same, valid
             or a tuple with custom padding values
@@ -16,8 +17,8 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
         (numpy.ndarray) the set of convolved images
     """
     # Extract image and kernel shapes
-    m, h, w = images.shape
-    kh, kw = kernel.shape
+    m, h, w, c = images.shape
+    kh, kw, kc, nk = kernels.shape
 
     # Extract stride values
     sh, sw = stride
@@ -33,24 +34,26 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
         ph, pw = padding
 
     # Pad the images
-    padded_images = np.pad(images, ((0,), (ph,), (pw,)))
+    padded_images = np.pad(images, ((0,), (ph,), (pw,), (0,)))
 
     # New image dimensions
-    m, h, w = padded_images.shape
+    m, h, w, c = padded_images.shape
 
     # Calculate image output dimensions
     oh = calculate_output_size(h, kh, sh)
     ow = calculate_output_size(w, kw, sw)
 
     # Create the output image array
-    convolved_images = np.zeros((m, oh, ow))
+    convolved_images = np.zeros((m, oh, ow, nk))
 
-    # Convolve the images
-    for i in range(0, oh * sh, sh):
-        for j in range(0, ow * sw, sw):
-            patch = padded_images[:, i: i + kh, j: j + kw]
-            element = np.sum(patch * kernel, axis=(1, 2))
-            convolved_images[:, i // sh, j // sw] = element
+    # Loop through each kernel
+    for i in range(nk):
+        # Convolve the images
+        for j in range(0, oh * sh, sh):
+            for k in range(0, ow * sw, sw):
+                patch = padded_images[:, j: j + kh, k: k + kw, :]
+                element = np.sum(patch * kernels[:, :, :, i], axis=(1, 2, 3))
+                convolved_images[:, j // sh, k // sw, i] = element
 
     return convolved_images
 
