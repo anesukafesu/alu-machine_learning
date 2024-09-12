@@ -110,5 +110,5 @@ class Neuron:
         dL_dW = dz * X
         dL_db = dz
 
-        self.__W += alpha * dL_dW
-        self.__b += alpha * dL_db
+        self.__W -= alpha * dL_dW
+        self.__b -= alpha * dL_db
