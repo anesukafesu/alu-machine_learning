@@ -105,9 +105,9 @@ class Neuron:
             None
         """
 
-        dz = (A - Y).T
+        dz = (A - Y)
 
-        dL_dW = dz * X
+        dL_dW = dz @ X.T
         dL_db = dz
 
         self.__W -= alpha * dL_dW
