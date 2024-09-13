@@ -104,11 +104,11 @@ class Neuron:
         Returns:
             None
         """
-
+        m = X.shape[1]
         dz = (A - Y)
 
-        dL_dW = dz @ X.T
-        dL_db = dz
+        dL_dW = (1 / m) * dz @ X.T
+        dL_db = (1 / m) * np.sum(dz)
 
         self.__W -= alpha * dL_dW
         self.__b -= alpha * dL_db
