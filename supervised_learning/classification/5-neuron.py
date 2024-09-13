@@ -105,7 +105,7 @@ class Neuron:
             None
         """
 
-        dz = (A - Y).T
+        dz = (A - Y)
 
         dL_dW = dz @ X
         dL_db = dz
