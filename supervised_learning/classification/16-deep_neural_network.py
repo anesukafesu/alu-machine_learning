@@ -10,6 +10,8 @@ class DeepNeuralNetwork:
     """
 
     def __init__(self, nx, layers):
+        """ Initialiser method
+        """
         if not isinstance(nx, int):
             raise TypeError('nx must be an integer')
 
@@ -40,5 +42,5 @@ class DeepNeuralNetwork:
             self.weights[b_key] = np.zeros((layers[i], 1))
 
     def __he(self, fan_in, fan_out):
-        # Draw weights from a normal distribution with standard deviation sqrt(2/fan_in)
+        # Uses he algo to draw random weights
         return np.random.randn(fan_out, fan_in) * np.sqrt(2 / fan_in)
