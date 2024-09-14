@@ -123,7 +123,7 @@ class NeuralNetwork:
         Y_hat = np.where(A >= 0.5, 1, 0)
 
         return Y_hat, cost
-    
+
     def gradient_descent(self, X, Y, A1, A2, alpha=0.05):
         """Perform one pass of gradient descent to update weights and bias
         """
