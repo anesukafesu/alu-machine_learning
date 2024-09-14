@@ -98,8 +98,6 @@ class NeuralNetwork:
         Returns:
             (numpy.float) the cost of the model
         """
-        Y = Y.astype('float')
-        A = A.astype('float')
         _, m = Y.shape
 
         costs = Y * np.log(A) + (1 - Y) * np.log(1.0000001 - A)
@@ -116,7 +114,7 @@ class NeuralNetwork:
             (Y_hat, cost) the predictions of the model and the cost
         """
         # Make predictions
-        A = self.forward_prop(X)
+        _, A = self.forward_prop(X)
 
         # Calculate the cost
         cost = self.cost(Y, A)
