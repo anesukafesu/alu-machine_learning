@@ -145,11 +145,10 @@ class Neuron:
 
         costs = []
 
-        for i in range(iterations):
+        for i in range(0, iterations):
             self.__A = self.forward_prop(X)
-            self.gradient_descent(X, Y, self.__A, alpha)
 
-            if graph or verbose:
+            if iterations % step == 0 and (graph or verbose):
                 cost = self.cost(Y, self.__A)
 
                 if verbose:
@@ -157,10 +156,24 @@ class Neuron:
 
                 if graph:
                     costs.append(cost)
+            
+            self.gradient_descent(X, Y, self.__A, alpha)
 
-        plt.title('Training Cost')
-        plt.xlabel = 'iterations'
-        plt.ylabel = 'cost'
-        plt.plot(np.arange(0, iterations, 1), cost)
-        plt.show()
+        # Calculate the final cost after training
+        self.__A = self.forward_prop(X)
+        cost = self.cost(Y, self.__A)
+        costs.append(cost)
+
+        # Print final cost after training if verbose
+        if verbose:
+            print('Cost after {} iterations: {}'.format(iterations, cost))
+
+        # Create plot
+        if graph:
+            plt.title('Training Cost')
+            plt.xlabel = 'iterations'
+            plt.ylabel = 'cost'
+            plt.plot(np.arange(0, iterations, 1), cost)
+            plt.show()
+
         return self.evaluate(X, Y)
