@@ -39,5 +39,7 @@ class DeepNeuralNetwork:
             self.weights[b_key] = np.zeros((layers[i], 1))
 
     def __he(self, fan_in, fan_out):
+        """ Uses He et al algorithm
+        """
         # Uses he algo to draw random weights
         return np.random.randn(fan_out, fan_in) * np.sqrt(2 / fan_in)
