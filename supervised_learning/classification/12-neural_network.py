@@ -98,6 +98,8 @@ class NeuralNetwork:
         Returns:
             (numpy.float) the cost of the model
         """
+        Y = Y.astype('float')
+        A = A.astype('float')
         _, m = Y.shape
 
         costs = Y * np.log(A) + (1 - Y) * np.log(1.0000001 - A)
