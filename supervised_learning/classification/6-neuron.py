@@ -113,7 +113,7 @@ class Neuron:
         self.__W -= alpha * dL_dW
         self.__b -= alpha * dL_db
 
-    def train(self, X, Y, iterations=5000, alpha=0.5):
+    def train(self, X, Y, iterations=5000, alpha=0.05):
         """ Trains the neuron
         Args:
             X (numpy.ndarray)
