@@ -16,7 +16,7 @@ def one_hot_encode(Y, classes):
             vector = [0] * n_prefix_zeros + [1] + [0] * n_suffix_zeros
 
             label_lookup[label] = vector
-            labels_so_far + 1
+            labels_so_far += 1
 
         vector = label_lookup[label]
         encoded_Y.append(vector)
