@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
-""" Module to implement DeepNeuralNetwork
+""" Implements DeepNeuralNetwork
 """
+
 import numpy as np
 
 
 class DeepNeuralNetwork:
-    """ A Deep Neural Network
+    """ Creates a deep neural network
     """
+
     def __init__(self, nx, layers):
         if not isinstance(nx, int):
             raise TypeError('nx must be an integer')
@@ -15,28 +17,28 @@ class DeepNeuralNetwork:
             raise ValueError('nx must be a positive integer')
 
         if not isinstance(layers, list) or len(layers) == 0:
-            raise TypeError('layers must be a list of positive integers')
-        
-        if not all(n > 0 for n in layers):
-            raise TypeError('layers must be a list of positive integers')
+            raise TypeError("layers must be a list of positive integers")
 
         self.L = len(layers)
         self.cache = {}
         self.weights = {}
+        self.nx = nx
+        self.layers = layers
 
         for i in range(self.L):
-            weights_key = 'W{}'.format(i + 1)
-            biases_key = 'B{}'.format(i + 1)
-            value = None
+            if not isinstance(layers[i], int) or layers[i] < 1:
+                raise TypeError("layers must be a list of positive integers")
+            
+            w_key = 'W{}'.format(i + 1)
+            b_key = 'b{}'.format(i + 1)
 
             if i == 0:
-                value = self.he_initialization(nx, layers[i])
+                self.weights[w_key] = self.__he(nx, layers[i])
             else:
-                value = self.he_initialization(layers[i - 1], layers[i])
+                self.weights[w_key] = self.__he(layers[i - 1], layers[i])
 
-            self.weights[weights_key] = value
-            self.weights[biases_key] = 0
+            self.weights[b_key] = np.zeros((layers[i], 1))
 
-    def he_initialization(self, fan_in, fan_out):
+    def __he(fan_in, fan_out):
         # Draw weights from a normal distribution with standard deviation sqrt(2/fan_in)
         return np.random.randn(fan_out, fan_in) * np.sqrt(2 / fan_in)
