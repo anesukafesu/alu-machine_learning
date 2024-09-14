@@ -66,13 +66,14 @@ class NeuralNetwork:
             X (numpy.ndarray with shape nx, m) where nx is
                 number of input features and m is the number
                 of training examples
-        
+
         Returns:
             A1, A2 (numpy.ndarrays) the activations in layer
             1 and layer 2
         """
         # Calculating Z1
-        # (nodes, nx) @ (nx, m) + (nodes, 1)[broadcast to (nodes, m)] = (nodes, m)
+        # (nodes, nx) @ (nx, m) + (nodes, 1)[broadcast to (nodes, m)]
+        # = (nodes, m)
         Z1 = self.__W1 @ X + self.__b1
 
         # Calculating activations in layer 1
