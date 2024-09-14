@@ -13,7 +13,7 @@ def one_hot_encode(Y, classes):
         if not label in label_lookup:
             n_prefix_zeros = labels_so_far
             n_suffix_zeros = classes - labels_so_far - 1
-            vector = [0] * n_prefix_zeros + [1] + [0] * n_suffix_zeros
+            vector = ([0] * n_prefix_zeros) + ([1]) + ([0] * n_suffix_zeros)
 
             label_lookup[label] = vector
             labels_so_far += 1
