@@ -72,18 +72,19 @@ class NeuralNetwork:
             1 and layer 2
         """
         # Calculating Z1
-        # (nodes, nx) @ (nx, m) = (nodes, m)
-        Z1 = self.__W1 @ X
+        # (nodes, nx) @ (nx, m) + (nodes, 1)[broadcast to (nodes, m)] = (nodes, m)
+        Z1 = self.__W1 @ X + self.__b1
 
         # Calculating activations in layer 1
         # (nodes, m)
         self.__A1 = self.__sigmoid(Z1)
 
         # Calculating Z2
-        # (1, nodes) @ (nodes, m) = (1, m)
-        Z2 = self.__W2 @ self.__A1
+        # (1, nodes) @ (nodes, m) + (1, 1)[Broadcast to (1, m)] = (1, m)
+        Z2 = self.__W2 @ self.__A1 + self.__b2
 
         # Calculating activations in layer 2
+        # (1, m)
         self.__A2 = self.__sigmoid(Z2)
 
         return self.__A1, self.__A2
