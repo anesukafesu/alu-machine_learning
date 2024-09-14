@@ -21,22 +21,22 @@ class DeepNeuralNetwork:
             raise TypeError('layers must be a list of positive integers')
 
         self.L = len(layers)
-        cache = {}
-        weights = {}
+        self.cache = {}
+        self.weights = {}
 
-        # for i in range(self.L):
-        #     weights_key = 'W{}'.format(i + 1)
-        #     biases_key = 'B{}'.format(i + 1)
-        #     value = None
+        for i in range(self.L):
+            weights_key = 'W{}'.format(i + 1)
+            biases_key = 'B{}'.format(i + 1)
+            value = None
 
-        #     if i == 0:
-        #         value = self.he_initialization(nx, layers[i])
-        #     else:
-        #         value = self.he_initialization(layers[i - 1], layers[i])
+            if i == 0:
+                value = self.he_initialization(nx, layers[i])
+            else:
+                value = self.he_initialization(layers[i - 1], layers[i])
 
-        #     weights[weights_key] = value
-        #     weights[biases_key] = 0
+            self.weights[weights_key] = value
+            self.weights[biases_key] = 0
 
-    # def he_initialization(self, fan_in, fan_out):
-    #     # Draw weights from a normal distribution with standard deviation sqrt(2/fan_in)
-    #     return np.random.randn(fan_out, fan_in) * np.sqrt(2 / fan_in)
+    def he_initialization(self, fan_in, fan_out):
+        # Draw weights from a normal distribution with standard deviation sqrt(2/fan_in)
+        return np.random.randn(fan_out, fan_in) * np.sqrt(2 / fan_in)
