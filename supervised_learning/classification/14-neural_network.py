@@ -141,3 +141,35 @@ class NeuralNetwork:
 
         self.__W1 -= (alpha * dw1)
         self.__b1 -= (alpha * db1)
+
+    def train(self, X, Y, iterations=5000, alpha=0.05):
+        """ Trains the model using gradient descent
+        Args:
+            X is a numpy.ndarray with shape (nx, m)
+            that contains the input data
+            nx is the number of input features to the neuron
+            m is the number of examples
+            Y is a numpy.ndarray with shape (1, m)
+            that contains the correct labels for the input data
+            iterations is the number of iterations to train over
+            alpha is the learning rate
+        """
+        if not isinstance(iterations, int):
+            raise TypeError('iterations must be an integer')
+
+        if iterations <= 0:
+            raise ValueError('iterations must be a positive integer')
+
+        if not isinstance(alpha, float):
+            raise TypeError('alpha must be a float')
+
+        if alpha <= 0:
+            raise ValueError('alpha must be positive')
+
+        for _ in range(iterations):
+            A1, A2 = self.forward_prop(X)
+            self.gradient_descent(X, Y, A1, A2, alpha)
+
+        # evaluate the gradient descent
+        evaluation = self.evaluate(X, Y)
+        return evaluation
