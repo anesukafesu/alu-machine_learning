@@ -56,13 +56,14 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes,
 
     with tf.Session() as sess:
         sess.run(init)
-        feed_dict = { x: X_train, y: Y_train }
+        train_dict = { x: X_train, y: Y_train }
+        val_dict = { x: X_valid, y: Y_valid }
 
         for i in range(iterations):
-            loss_train = sess.run(loss, feed_dict=feed_dict)
-            accuracy_train = sess.run(accuracy, feed_dict=feed_dict)
-            loss_valid = sess.run(loss, feed_dict=feed_dict)
-            accuracy_valid = sess.run(accuracy, feed_dict=feed_dict)
+            loss_train = sess.run(loss, feed_dict=train_dict)
+            accuracy_train = sess.run(accuracy, feed_dict=train_dict)
+            loss_valid = sess.run(loss, feed_dict=valid_dict)
+            accuracy_valid = sess.run(accuracy, feed_dict=valid_dict)
 
             if i % 100 == 0:
                 print("After {} iterations:".format(i))
@@ -74,10 +75,10 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes,
             sess.run(train_op, feed_dict=feed_dict)
 
         i += 1
-        loss_train = sess.run(loss, feed_dict=feed_dict)
-        accuracy_train = sess.run(accuracy, feed_dict=feed_dict)
-        loss_valid = sess.run(loss, feed_dict=feed_dict)
-        accuracy_valid = sess.run(accuracy, feed_dict=feed_dict)
+        loss_train = sess.run(loss, feed_dict=train_dict)
+        accuracy_train = sess.run(accuracy, feed_dict=train_dict)
+        loss_valid = sess.run(loss, feed_dict=valid_dict)
+        accuracy_valid = sess.run(accuracy, feed_dict=valid_dict)
         print("After {} iterations:".format(i))
         print("\tTraining Cost: {}".format(loss_train))
         print("\tTraining Accuracy: {}".format(accuracy_train))
