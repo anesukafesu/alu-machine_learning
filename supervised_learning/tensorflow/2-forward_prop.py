@@ -12,7 +12,7 @@ def forward_prop(x, layer_sizes=[], activations=[]):
         x (tf.Tensor) the placeholder input data
         layer_sizes (List(int)) a list of integers where each
         number corresponds to the size of a layer
-        activation_functions (List(int)) a list of activation functions 
+        activation_functions (List(int)) a list of activation functions
         for each layer of the neural network
     Returns:
         predictions (tf.Tensor) the predictions made by the network
