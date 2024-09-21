@@ -57,7 +57,7 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes,
     with tf.Session() as sess:
         sess.run(init)
         train_dict = { x: X_train, y: Y_train }
-        val_dict = { x: X_valid, y: Y_valid }
+        valid_dict = { x: X_valid, y: Y_valid }
 
         for i in range(iterations):
             loss_train = sess.run(loss, feed_dict=train_dict)
