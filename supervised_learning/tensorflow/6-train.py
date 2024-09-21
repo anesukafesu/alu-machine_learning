@@ -26,7 +26,7 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes,
         activation function to be used for each layer
         alpha (float) the learning rate for the network
         iterations (int) the number of iterations to make
-        save_path (string) the path to the file in 
+        save_path (string) the path to the file in
         which the model will be saved
     Returns
         save_path (string) the path where the model was saved
@@ -59,13 +59,13 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes,
 
         for i in range(iterations):
             loss_train = sess.run(loss,
-                                feed_dict={x: X_train, y: Y_train})
-            accuracy_train = sess.run(accuracy,
                                     feed_dict={x: X_train, y: Y_train})
+            accuracy_train = sess.run(accuracy,
+                                        feed_dict={x: X_train, y: Y_train})
             loss_valid = sess.run(loss,
-                                feed_dict={x: X_valid, y: Y_valid})
-            accuracy_valid = sess.run(accuracy,
                                     feed_dict={x: X_valid, y: Y_valid})
+            accuracy_valid = sess.run(accuracy,
+                                        feed_dict={x: X_valid, y: Y_valid})
 
             if i % 100 == 0:
                 print("After {} iterations:".format(i))
