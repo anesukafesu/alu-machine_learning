@@ -10,7 +10,7 @@ create_train_op = __import__('5-create_train_op').create_train_op
 forward_prop = __import__('2-forward_prop').forward_prop
 
 
-def train(X_train, Y_train, X_valid, Y_valid, layer_sizes, 
+def train(X_train, Y_train, X_valid, Y_valid, layer_sizes,
           activations, alpha, iterations, save_path="/tmp/model.ckpt"):
     """ Creates and trains a neural network based on the passed in parameters
     Args:
@@ -26,7 +26,8 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes,
         activation function to be used for each layer
         alpha (float) the learning rate for the network
         iterations (int) the number of iterations to make
-        save_path (string) the path to the file in which the model will be saved
+        save_path (string) the path to the file in 
+        which the model will be saved
     Returns
         save_path (string) the path where the model was saved
     """
@@ -57,9 +58,11 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes,
         sess.run(init)
 
         for i in range(iterations):
-            loss_train = sess.run(loss, feed_dict={x: X_train, y: Y_train})
+            loss_train = sess.run(loss, feed_dict={x: X_train,
+                                    y: Y_train})
             accuracy_train = sess.run(accuracy, feed_dict={x: X_train, y: Y_train})
-            loss_valid = sess.run(loss, feed_dict={x: X_valid, y: Y_valid})
+            loss_valid = sess.run(loss, feed_dict={x: X_valid,
+                                    y: Y_valid})
             accuracy_valid = sess.run(accuracy, feed_dict={x: X_valid, y: Y_valid})
 
             if i % 100 == 0:
@@ -69,7 +72,7 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes,
                 print("\tValidation Cost: {}".format(loss_valid))
                 print("\tValidation Accuracy: {}".format(accuracy_valid))
 
-            sess.run(train_op, feed_dict={ x: X_train, y: Y_train })
+            sess.run(train_op, feed_dict={x: X_train, y: Y_train})
 
         i += 1
         loss_train = sess.run(loss,
