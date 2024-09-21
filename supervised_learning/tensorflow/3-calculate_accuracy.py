@@ -12,6 +12,6 @@ def calculate_accuracy(y, y_pred):
     Returns:
         accuracy (tf.Tensor) the accuracy of the predictions
     """
-    marked_predictions = tf.argmax(y, 1) == tf.argmax(y_pred, 1)
+    marked_predictions = tf.equal(tf.argmax(y, 1), tf.argmax(y_pred, 1))
     accuracy = tf.reduce_mean(tf.cast(marked_predictions, tf.float32))
     return accuracy
