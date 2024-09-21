@@ -56,14 +56,13 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes,
 
     with tf.Session() as sess:
         sess.run(init)
+        feed_dict = { x: X_train, y: Y_train }
 
         for i in range(iterations):
-            loss_train = sess.run(loss, feed_dict={x: X_train,
-                                    y: Y_train})
-            accuracy_train = sess.run(accuracy, feed_dict={x: X_train, y: Y_train})
-            loss_valid = sess.run(loss, feed_dict={x: X_valid,
-                                    y: Y_valid})
-            accuracy_valid = sess.run(accuracy, feed_dict={x: X_valid, y: Y_valid})
+            loss_train = sess.run(loss, feed_dict=feed_dict)
+            accuracy_train = sess.run(accuracy, feed_dict=feed_dict)
+            loss_valid = sess.run(loss, feed_dict=feed_dict)
+            accuracy_valid = sess.run(accuracy, feed_dict=feed_dict)
 
             if i % 100 == 0:
                 print("After {} iterations:".format(i))
@@ -72,17 +71,13 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes,
                 print("\tValidation Cost: {}".format(loss_valid))
                 print("\tValidation Accuracy: {}".format(accuracy_valid))
 
-            sess.run(train_op, feed_dict={x: X_train, y: Y_train})
+            sess.run(train_op, feed_dict=feed_dict)
 
         i += 1
-        loss_train = sess.run(loss,
-                              feed_dict={x: X_train, y: Y_train})
-        accuracy_train = sess.run(accuracy,
-                                  feed_dict={x: X_train, y: Y_train})
-        loss_valid = sess.run(loss,
-                              feed_dict={x: X_valid, y: Y_valid})
-        accuracy_valid = sess.run(accuracy,
-                                  feed_dict={x: X_valid, y: Y_valid})
+        loss_train = sess.run(loss, feed_dict=feed_dict)
+        accuracy_train = sess.run(accuracy, feed_dict=feed_dict)
+        loss_valid = sess.run(loss, feed_dict=feed_dict)
+        accuracy_valid = sess.run(accuracy, feed_dict=feed_dict)
         print("After {} iterations:".format(i))
         print("\tTraining Cost: {}".format(loss_train))
         print("\tTraining Accuracy: {}".format(accuracy_train))
