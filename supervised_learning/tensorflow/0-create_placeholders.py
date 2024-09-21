@@ -4,7 +4,7 @@
 import tensorflow as tf
 
 
-def create_placeholder(nx, classes):
+def create_placeholders(nx, classes):
     """ Creates x, y placeholders to hold inputs and
     outputs respectively:
     Args:
