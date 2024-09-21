@@ -5,7 +5,7 @@ import tensorflow as tf
 create_layer = __import__('1-create_layer').create_layer
 
 
-def forward_prop(x, layer_sizes=[], activation_functions=[]):
+def forward_prop(x, layer_sizes=[], activations=[]):
     """ Performs forward propagation on a network with the
     parameters specified
     Args:
@@ -17,22 +17,9 @@ def forward_prop(x, layer_sizes=[], activation_functions=[]):
     Returns:
         predictions (tf.Tensor) the predictions made by the network
     """
-    n_layers = len(layer_sizes)
-    previous_layer = None
+    last_layer = X
 
-    # Building the neural network layer by layer
-    for i in range(n_layers):
-        layer_size = layer_sizes[i]
-        activation_function = activation_functions[i]
-        current_layer = None
+    for layer_size, activation in zip(layer_sizes, activations):
+        last_layer = create_layer(last_layer, layer_size, activation)
 
-        if previous_layer == None:
-            current_layer = create_layer(x, layer_size, activation_function)
-        else:
-            current_layer = create_layer(previous_layer, layer_size, activation_function)
-
-        previous_layer = current_layer
-
-    # The final layer is the predictions layer
-    predictions_layer = previous_layer
-    return predictions_layer
+    return last_layer
