@@ -14,7 +14,7 @@ def create_placeholder(nx, classes):
         (x, y) (tuple(tensorflow.Tensor)) the placeholders
         for inputs and outputs respectively.
     """
-    x = tf.placeholder(tf.float32, shape=(1, nx))
-    y = tf.placeholder(tf.float32, shape=(1, classes))
+    x = tf.placeholder(tf.float32, shape=(None, nx), name='x')
+    y = tf.placeholder(tf.float32, shape=(None, classes), name='y')
 
     return x, y
