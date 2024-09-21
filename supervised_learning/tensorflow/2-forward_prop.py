@@ -17,7 +17,7 @@ def forward_prop(x, layer_sizes=[], activations=[]):
     Returns:
         predictions (tf.Tensor) the predictions made by the network
     """
-    last_layer = X
+    last_layer = x
 
     for layer_size, activation in zip(layer_sizes, activations):
         last_layer = create_layer(last_layer, layer_size, activation)
