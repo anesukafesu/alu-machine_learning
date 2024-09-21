@@ -13,6 +13,6 @@ def create_layer(prev, n, activation):
     Returns:
         layer (tf.Tensor) the layer
     """
-    initialiser = tf.contrib.layers.variance_scaling_initializer(mode="FAN_AVG")
+    init = tf.contrib.layers.variance_scaling_initializer(mode="FAN_AVG")
     return tf.layers.dense(prev, units=n, activation=activation,
-                            kernel_initializer=initialiser, name='layer')
+                kernel_initializer=init, name='layer')
