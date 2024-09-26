@@ -29,8 +29,6 @@ def l2_reg_cost(cost, lam, weights, L, m):
     numpy.float: The loss of the network accounting for
     l2 regularization.
     """
-
-    weights = list(weights.values())
     sum_of_weights_squared = 0
 
     for layer_weights in weights.values():
