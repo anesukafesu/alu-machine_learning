@@ -32,7 +32,7 @@ def l2_reg_cost(cost, lam, weights, L, m):
     sum_of_weights_squared = 0
 
     # Looping through all the weights and biases
-    for key, value in weights.entries():
+    for key, value in weights.items():
 
         # If the first character of the key is a W then it's
         # a weight. So we add it's square to the sum_of_weights
