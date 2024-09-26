@@ -31,8 +31,13 @@ def l2_reg_cost(cost, lam, weights, L, m):
     """
     sum_of_weights_squared = 0
 
-    for layer_weights in weights.values():
-        sum_of_weights_squared += np.sum(layer_weights ** 2)
+    # Looping through all the weights and biases
+    for key, value in weights.entries():
+
+        # If the first character of the key is a W then it's
+        # a weight. So we add it's square to the sum_of_weights
+        if key[0] == 'W':
+            sum_of_weights_squared += np.sum(value ** 2)
 
     regularization_cost = (sum_of_weights_squared * lam) / (2 * m)
 
