@@ -7,7 +7,7 @@ import tensorflow as tf
 def l2_reg_create_layer(prev, n, activation, lam):
     """ Creates a tensorflow layer that includes l2
     regularization
-    
+
     Parameters:
     prev (tensorflow.Tensor) Tensor containing the
     output of the previous layer.
@@ -24,8 +24,10 @@ def l2_reg_create_layer(prev, n, activation, lam):
     Returns:
     tensorflow.Tensor: the layer created
     """
-    initializer = tf.contrib.layers.variance_scaling_initializer(mode="FAN_AVG")
+    initializer = tf.contrib.layers.variance_scaling_initializer(
+        mode="FAN_AVG")
     regularizer = tf.contrib.layers.l2_regularizer(lam)
 
-    return tf.layers.Dense(n, activation=activation, kernel_initializer=initializer,
+    return tf.layers.Dense(n, activation=activation, 
+                           kernel_initializer=initializer,
                            kernel_regularizer=regularizer)(prev)
