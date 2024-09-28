@@ -11,7 +11,7 @@ def l2_reg_gradient_descent(Y, weights, cache, alpha, lam, L):
     and softmax for the last layer.
 
     Parameters:
-    Y (numpy.ndarray): A one-hot encoded numpy array with shape 
+    Y (numpy.ndarray): A one-hot encoded numpy array with shape
     (n_classes, m) that contains the correct labels for the data.
     In this context, n_classes is the number of classes and m is the
     number of training examples.
