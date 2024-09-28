@@ -17,7 +17,7 @@ def normalization_constants(X):
         tuple: A tuple containing the mean and standard
         deviation for each feature.
     """
-    mean = np.sum(X, axis=1)
-    std = np.std(X, axis=1)
+    mean = np.mean(X, axis=0)
+    std = np.std(X, axis=0)
 
     return mean, std
