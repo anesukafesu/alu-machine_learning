@@ -57,7 +57,7 @@ def dropout_forward_prop(X, weights, L, keep_prob):
             # Generate a drop max of ones and zeros where the prob
             # of a 1 is keep_prob.
             random_values = np.random.rand(A.shape[0], A.shape[1])
-            D = (random_values > keep_prob).astype(int)
+            D = (random_values < keep_prob).astype(int)
 
             # Apply the mask
             A *= D
