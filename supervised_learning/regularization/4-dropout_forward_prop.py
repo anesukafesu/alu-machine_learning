@@ -68,4 +68,3 @@ def dropout_forward_prop(X, weights, L, keep_prob):
             cache['D' + str(i)] = D
 
     return cache
-        
