@@ -12,7 +12,7 @@ def create_confusion_matrix(labels, logits):
         array is in the shape (m, classes) where m is the number
         of datapoints and classes is the number of classes in the
         dataset.
-        
+
         logits (numpy.ndarray): A one-hot enocded numpy.ndarray
         containing the predictions made by the model for each
         data point. The array is in the shape (m, classes) where
