@@ -15,5 +15,5 @@ def sensitivity(confusion_matrix):
         numpy.ndarray: The sensitivity of each class
     """
     true_positives = np.diag(confusion_matrix)
-    true_positives_plus_false_negatives = np.sum(confusion_matrix, axis=0)
+    true_positives_plus_false_negatives = np.sum(confusion_matrix, axis=1)
     return true_positives / true_positives_plus_false_negatives
