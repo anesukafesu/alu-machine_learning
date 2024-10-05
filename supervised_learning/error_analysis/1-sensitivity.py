@@ -4,7 +4,7 @@
 import numpy as np
 
 
-def calculate_sensitivity(confusion_matrix):
+def sensitivity(confusion_matrix):
     """ Calculate the sensitivity of each class in a given 
     confusion matrix.
 
