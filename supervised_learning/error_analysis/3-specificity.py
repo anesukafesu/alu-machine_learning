@@ -20,6 +20,6 @@ def specificity(confusion_matrix):
     total_actuals_per_class = np.sum(confusion_matrix, axis=1)
     true_positives = np.diag(confusion_matrix)
     false_positives = total_predictions_per_class - true_positives
-    true_negatives = (total_samples - total_predictions_per_class 
+    true_negatives = (total_samples - total_predictions_per_class
                       - total_actuals_per_class + true_positives)
     return true_negatives / (true_negatives + false_positives)
