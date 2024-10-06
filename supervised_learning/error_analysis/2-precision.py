@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Implements create_confusion_matrix
+""" Implements precision
 """
 import numpy as np
 
