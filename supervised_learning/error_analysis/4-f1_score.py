@@ -10,7 +10,7 @@ def f1_score(confusion_matrix):
     confusion matrix
     Args:
         confusion_matrix (numpy.ndarray): The confusion matrix
-    
+
     Returns:
         numpy.ndarray: The f1 scores
     """
