@@ -14,6 +14,6 @@ def f1_score(confusion_matrix):
     Returns:
         numpy.ndarray: The f1 scores
     """
-    precision = precision(confusion_matrix)
-    sensitivity = sensitivity(confusion_matrix)
-    return (2 * precision * sensitivity) / (sensitivity + precision)
+    p = precision(confusion_matrix)
+    s = sensitivity(confusion_matrix)
+    return (2 * p * s) / (s + p)
