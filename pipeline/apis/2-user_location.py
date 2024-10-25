@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+""" Prints the location of a GitHub user specified
+as an arg to the script
+"""
 import sys
 import requests
 import json
