@@ -29,6 +29,7 @@ def availableShips(n_passengers):
 
         else:
             print(f"Request failed with status code: {response.status_code}")
+            break
 
     return ships
 
