@@ -50,6 +50,6 @@ def is_suitable_ship(ship, n_passengers):
     max_passengers = ship['passengers']
 
     if max_passengers is not None:
-        return int(max_passengers) > n_passengers
+        return int(max_passengers) >= n_passengers
     else:
         return False
