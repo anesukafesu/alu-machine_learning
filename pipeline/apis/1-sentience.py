@@ -2,7 +2,6 @@
 """ Implements sentientPlanets
 """
 import requests
-import json
 
 
 def sentientPlanets():
@@ -12,40 +11,40 @@ def sentientPlanets():
     Returns:
         List: A list of names of all sentient planets.
     """
-    next_url = 'https://swapi-api.alx-tools.com/api/planets?page=1'
-    result = []
+    next_url = 'https://swapi-api.alx-tools.com/api/species?page=1'
+    home_planets = []
 
     while next_url is not None:
         response = requests.get(next_url)
 
         if response.status_code == 200:
-            data = json.loads(response.text)
+            data = response.json()
             next_url = data['next']
-            candidate_planets = data['results']
-            sentient_planets = filter(is_planet_sentient, candidate_planets)
+            candidate_species = data['results']
 
-            for planet in sentient_planets:
-                result.append(planet['name'])
+            for species in candidate_species:
+                if is_species_sentient(species):
+                    homeworld_url = species['homeworld']
+                
+                    if homeworld_url:
+                        homeworld = requests.get(homeworld_url).json()
+                        home_planets.append(homeworld['name'])
 
         else:
             print("Error:", response.status_code)
             break
 
-    return result
+    return home_planets
 
 
-def is_planet_sentient(planet):
-    """ Determines if a planet contains sentient life or not.
+def is_species_sentient(species):
+    """ Determines if a species is sentient or not.
     Args:
-        planet (dict): The planet whose sentience is to be
+        species (dict): The species whose sentience is to be
         determined.
     Returns:
-        Boolean: True if the planet contains sentient life.
+        Boolean: True if the species is sentient.
         False if not.
     """
-    population = planet['population']
-
-    try:
-        return int(population) > 0
-    except Exception:
-        return False
+    return species['designation'] == 'sentient' or \
+           species['classification'] == 'sentient'
