@@ -28,7 +28,7 @@ def availableShips(n_passengers):
             ships.append(list(map(lambda s: s['name'], viable_ships)))
 
         else:
-            print(f"Request failed with status code: {response.status_code}")
+            print("Request failed with status code: {}".format(response.status_code))
             break
 
     return ships
