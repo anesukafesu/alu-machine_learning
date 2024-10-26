@@ -24,8 +24,13 @@ def availableShips(n_passengers):
             data = json.loads(response.text)
             next_url = data['next']
 
-            viable_ships = filter(lambda ship: is_suitable_ship(ship, n_passengers), data['results'])
-            ships.append(list(map(lambda s: s['name'], viable_ships)))
+            viable_ships = filter(
+                lambda ship: is_suitable_ship(ship, n_passengers),
+                data['results']
+            )
+
+            for ship in viable_ships:
+                ships.append(ship)
 
         else:
             print("Request failed with status code: {}".format(response.status_code))
@@ -47,9 +52,9 @@ def is_suitable_ship(ship, n_passengers):
         boolean: True if the ship is suitable. False if
         it is not suitable. 
     """
-    max_passengers = ship['passengers']
-
-    if max_passengers is not None:
+    try:
+        max_passengers = ship['passengers']
+        max_passengers = int(max_passengers)
         return int(max_passengers) >= n_passengers
-    else:
+    except:
         return False
