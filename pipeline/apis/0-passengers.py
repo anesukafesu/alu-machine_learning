@@ -30,7 +30,7 @@ def availableShips(n_passengers):
             )
 
             for ship in viable_ships:
-                ships.append(ship)
+                ships.append(ship['name'])
 
         else:
             print("Request failed with status code: {}".format(response.status_code))
