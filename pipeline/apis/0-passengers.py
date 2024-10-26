@@ -52,7 +52,7 @@ def is_suitable_ship(ship, n_passengers):
         carried by the ship
     Returns:
         boolean: True if the ship is suitable. False if
-        it is not suitable. 
+        it is not suitable.
     """
     try:
         max_passengers = ship['passengers']
