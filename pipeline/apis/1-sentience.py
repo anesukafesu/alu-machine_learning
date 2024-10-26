@@ -23,7 +23,10 @@ def sentientPlanets():
             next_url = data['next']
             candidate_planets = data['results']
             sentient_planets = filter(is_planet_sentient, candidate_planets)
-            result.append(list(map(lambda p: p['name'], sentient_planets)))
+
+            for planet in sentient_planets:
+                result.append(planet['name'])
+
         else:
             print("Error:", response.status_code)
             break
