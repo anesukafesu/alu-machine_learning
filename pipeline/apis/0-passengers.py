@@ -33,7 +33,9 @@ def availableShips(n_passengers):
                 ships.append(ship['name'])
 
         else:
-            print("Request failed with status code: {}".format(response.status_code))
+            print("Request failed with status code: {}".format(
+                response.status_code
+            ))
             break
 
     return ships
@@ -54,7 +56,8 @@ def is_suitable_ship(ship, n_passengers):
     """
     try:
         max_passengers = ship['passengers']
+        max_passengers = max_passengers.replace(",", "")
         max_passengers = int(max_passengers)
         return int(max_passengers) >= n_passengers
-    except:
+    except Exception:
         return False
