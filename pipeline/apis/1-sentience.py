@@ -4,6 +4,7 @@
 import requests
 import json
 
+
 def sentientPlanets():
     """ Returns a list of names of all sentient planets.
     Args:
@@ -26,7 +27,7 @@ def sentientPlanets():
         else:
             print("Error:", response.status_code)
             break
-    
+
     return result
 
 
