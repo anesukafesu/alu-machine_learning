@@ -4,17 +4,20 @@ as an arg to the script
 """
 import sys
 import requests
-import json
+import time
 
 if __name__ == '__main__':
     url = sys.argv[1]
     response = requests.get(url)
 
     if response.status_code == 200:
-        data = json.loads(response.text)
+        data = response.json()
         print(data['location'])
     elif response.status_code == 403:
-        print('Reset in ')
+        rate_limit_reset = int(response.headers['X-Ratelimit-Reset'])
+        current_time = int(time.time())
+        reset_time_remaining = ((rate_limit_reset - current_time) / 60)
+        print('Reset in {} min.'.format(reset_time_remaining))
     elif response.status_code == 404:
         print('Not found')
     else:
