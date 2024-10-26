@@ -10,7 +10,10 @@ if __name__ == '__main__':
     upcoming_launches = response.json()
 
     # Sorting them to get the earliest launch
-    upcoming_launch = sorted(upcoming_launches, key=lambda l: l['date_unix'])[0]
+    sorted_launches = sorted(
+        upcoming_launches, key=lambda l: l['date_unix']
+    )
+    upcoming_launch = sorted_launches[0]
 
     # Get the rocket for that launch
     rocket_id = upcoming_launch['rocket']
