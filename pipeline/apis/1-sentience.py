@@ -41,7 +41,7 @@ def is_planet_sentient(planet):
     """
     population = planet['population']
 
-    if population is None:
+    try:
+        return int(population) > 0
+    except Exception:
         return False
-    
-    return int(population) > 0
